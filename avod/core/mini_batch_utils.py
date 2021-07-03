@@ -296,8 +296,7 @@ class MiniBatchUtils:
         """
 
         # mask the indices by the all_mask which is the mini_batch mask
-        masked_argmax = tf.boolean_mask(max_iou_indices,
-                                        mb_mask)
+        masked_argmax = max_iou_indices
 
         # get the corresponding class indices that had high IoUs
         masked_labels = tf.gather(class_indices,
@@ -305,8 +304,7 @@ class MiniBatchUtils:
 
         # mask the positives by the total mask again
         # this gives us the 'True' entries
-        mask_pos_mask = tf.boolean_mask(mb_pos_mask,
-                                        mb_mask)
+        mask_pos_mask = mb_pos_mask
 
         # multiply the masked label entries by this positives only
         # this will keep the positive class labels and sets everything else

@@ -93,13 +93,12 @@ def train(model, train_config):
     # This op can only be run on device with gpu
     # so it's skipped on travis
     is_travis = 'TRAVIS' in os.environ
-    if not is_travis:
-        # tf.summary.scalar('bytes_in_use',
-        #                   tf.contrib.memory_stats.BytesInUse())
-        tf.summary.scalar('max_bytes',
-                          tf.contrib.memory_stats.MaxBytesInUse())
-                          
-    summaries = set(tf.get_collection(tf.GraphKeys.SUMMARIES))
+    # if not is_travis:
+    #     # tf.summary.scalar('bytes_in_use',
+    #     #                   tf.contrib.memory_stats.BytesInUse())
+    #     tf.summary.scalar('max_bytes',
+    #                       tf.contrib.memory_stats.MaxBytesInUse())
+    summaries = set(tf.get_collection(tf.GraphKeys.SUMMARIES)) 
     summary_merged = summary_utils.summaries_to_keep(
         summaries,
         global_summaries,
@@ -114,7 +113,19 @@ def train(model, train_config):
         # GPU memory config
         config = tf.ConfigProto()
         config.gpu_options.allow_growth = allow_gpu_mem_growth
-        sess = tf.Session(config=npu_config_proto(config_proto=config))
+        custom_op = config.graph_options.rewrite_options.custom_optimizers.add()
+        custom_op.name = "NpuOptimizer"
+        if False:
+            custom_op.parameter_map["use_off_line"].b = True
+            custom_op.parameter_map["profiling_mode"].b = True  # 打开profiling
+            # custom_op.parameter_map["profiling_options"].s = tf.combat.as_bytes("task_trace")
+            # custom_op.parameter_map["fp_point"].s = tf.combat.as_bytes("img_input/sub")
+            # custom_op.parameter_map["bp_point"].s = tf.combat.as_bytes("train_op/gradients/bev_vgg_pyr/conv1/conv1_1/Conv2D_grad/Conv2DBackpropFilter")
+            custom_op.parameter_map["profiling_options"].s = tf.compat.as_bytes('{"output":"/home/jiayan/profiling","training_trace":"on","task_trace":"on","aicpu":"on","fp_point":"img_input/sub","bp_point":"train_op/gradients/bev_vgg_pyr/conv1/conv1_1/Conv2D_grad/Conv2DBackpropFilter"}')
+            # custom_op.parameter_map["profiling_options"].s = tf.compat.as_bytes('{"output":"/home/jiayan/profiling","training_trace":"on","task_trace":"on","aicpu":"on","fp_point":"bev_vgg_pyr/conv1/conv1_1/Conv2D","bp_point":"train_op/gradients/bev_vgg_pyr/conv1/conv1_1/Conv2D_grad/tuple/control_dependency_1"}')
+        config.graph_options.rewrite_options.remapping = RewriterConfig.OFF  # 必须显式关闭remap
+        config.graph_options.rewrite_options.memory_optimization = RewriterConfig.OFF  # 必须显式关闭
+        sess = tf.Session(config=config)
     else:
         sess = tf.Session(config=npu_config_proto())
 
@@ -140,6 +151,7 @@ def train(model, train_config):
     else:
         # Initialize the variables
         sess.run(init)
+    # sess.run(init)
 
     # Read the global step if restored
     global_step = tf.train.global_step(sess,
@@ -152,7 +164,9 @@ def train(model, train_config):
     for step in range(global_step, max_iterations + 1):
 
         # Save checkpoint
-        if step % checkpoint_interval == 0:
+        st = time.time()
+
+        if step % checkpoint_interval == 0 and step != 0:
             global_step = tf.train.global_step(sess,
                                                global_step_tensor)
             saver.save(sess,
@@ -162,10 +176,13 @@ def train(model, train_config):
             print('Step {} / {}, Checkpoint saved to {}-{:08d}'.format(
                 step, max_iterations,
                 checkpoint_path, global_step))
+        # print('save checkpoint', time.time() - st)
         
         # Create feed_dict for inferencing
+        st = time.time()
         feed_dict = model.create_feed_dict()
-
+        # print("create_feed_dict", time.time() - st) # 3s, 1.21
+        # raise Exception("create_feed_dict")
         # Write summaries and train op
         if step % summary_interval == 0:
             current_time = time.time()

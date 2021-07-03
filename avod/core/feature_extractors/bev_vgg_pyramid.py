@@ -56,8 +56,12 @@ class BevVggPyr(bev_feature_extractor.BevFeatureExtractor):
                                     outputs_collections=end_points_collection):
 
                     # Pad 700 to 704 to allow even divisions for max pooling
-                    padded = tf.pad(inputs, [[0, 0], [4, 0], [0, 0], [0, 0]])
-
+                    # print(inputs.shape)
+                    # inputs = tf.dtypes.cast(inputs, tf.float16)
+                    # print(inputs)
+                    # raise Exception
+                    # padded = tf.pad(inputs, [[0, 0], [4, 0], [0, 0], [0, 0]])
+                    padded = inputs
                     # Encoder
                     conv1 = slim.repeat(padded,
                                         vgg_config.vgg_conv1[0],

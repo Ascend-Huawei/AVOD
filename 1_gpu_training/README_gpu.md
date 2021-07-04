@@ -59,3 +59,6 @@ The frozen graph `.pb` file is saved in `pb_model/pb_model`. To further get the 
 ```
 python pb_model/tensorflow_util.py pb_model/pb_model/frozen_model_ckpt_-1.pb -t
 ```
+
+checkpoint and pbtxt in 
+https://drive.google.com/drive/folders/16XYpDWfaou6KAEL-ZxZwU2Q-iy7zHNw9?usp=sharing

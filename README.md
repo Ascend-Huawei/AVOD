@@ -1,6 +1,6 @@
-Delivery Result for GPU reproduction: [README_gpu](1_gpu_training/README_gpu.md)
+Delivery Result for GPU reproduction: [README_gpu](1_gpu_training/README_gpu.md) and support documents in folder [1_gpu_training](1_gpu_training)
 
-Delivery Result for NPU training (currently, conversion, loss convergence, accuracy): 
+Delivery Result for NPU training (currently, conversion, loss convergence, accuracy): as below, support documents in folder [2_npu_training](2_npu_training)
 
 
 ## Evaluation AP

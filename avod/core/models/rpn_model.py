@@ -1,6 +1,7 @@
 from npu_bridge.npu_init import *
 import numpy as np
 import tensorflow as tf
+import cv2
 from tensorflow.contrib import slim
 
 from avod.builders import feature_extractor_builder
@@ -42,6 +43,9 @@ class RpnModel(model.DetectionModel):
     PL_IMG_IDX = 'current_img_idx'
     PL_GROUND_PLANE = 'ground_plane'
 
+    # Path Drop MASK
+    PL_IMG_PATH_DROP_MASK = 'img_path_drop_mask'
+    PL_BEV_PATH_DROP_MASK = 'bev_path_drop_mask'
     ##############################
     # Keys for Predictions
     ##############################
@@ -71,7 +75,7 @@ class RpnModel(model.DetectionModel):
             train_val_test: "train", "val", or "test"
             dataset: the dataset that will provide samples and ground truth
         """
-
+        self.label_boxes_3d_shape = None
         # Sets model configs (_config)
         super(RpnModel, self).__init__(model_config)
 
@@ -84,7 +88,7 @@ class RpnModel(model.DetectionModel):
 
         # Input config
         input_config = self._config.input_config
-        self._bev_pixel_size = np.asarray([input_config.bev_dims_h,
+        self._bev_pixel_size = np.asarray([input_config.bev_dims_h+4,
                                            input_config.bev_dims_w])
         self._bev_depth = input_config.bev_depth
 
@@ -178,7 +182,7 @@ class RpnModel(model.DetectionModel):
             # Take variable size input images
             img_input_placeholder = self._add_placeholder(
                 tf.float32,
-                [None, None, self._img_depth],
+                [self._img_pixel_size[0], self._img_pixel_size[1], self._img_depth],
                 self.PL_IMG_INPUT)
 
             self._img_input_batches = tf.expand_dims(
@@ -231,6 +235,10 @@ class RpnModel(model.DetectionModel):
                                       shape=[1],
                                       name=self.PL_IMG_IDX)
                 self._add_placeholder(tf.float32, [4], self.PL_GROUND_PLANE)
+        
+        with tf.variable_scope('path_drop_mask'):
+            self._add_placeholder(tf.float32, [1], self.PL_IMG_PATH_DROP_MASK)
+            self._add_placeholder(tf.float32, [1], self.PL_BEV_PATH_DROP_MASK)
 
     def _set_up_feature_extractors(self):
         """Sets up feature extractors and stores feature maps and
@@ -297,26 +305,29 @@ class RpnModel(model.DetectionModel):
                 self._path_drop_probabilities[1] == 1.0):
             with tf.variable_scope('rpn_path_drop'):
 
-                random_values = tf.random_uniform(shape=[3],
-                                                  minval=0.0,
-                                                  maxval=1.0)
+                # random_values = tf.random_uniform(shape=[3],
+                #                                   minval=0.0,
+                #                                   maxval=1.0)
 
-                img_mask, bev_mask = self.create_path_drop_masks(
-                    self._path_drop_probabilities[0],
-                    self._path_drop_probabilities[1],
-                    random_values)
+                # img_mask, bev_mask = self.create_path_drop_masks(
+                #     self._path_drop_probabilities[0],
+                #     self._path_drop_probabilities[1],
+                #     random_values)
+
+                self.bev_path_drop_mask = self.placeholders[self.PL_BEV_PATH_DROP_MASK]
+                self.img_path_drop_mask = self.placeholders[self.PL_IMG_PATH_DROP_MASK]
 
                 img_proposal_input = tf.multiply(img_proposal_input,
-                                                 img_mask)
+                                                 self.img_path_drop_mask)
 
                 bev_proposal_input = tf.multiply(bev_proposal_input,
-                                                 bev_mask)
+                                                 self.bev_path_drop_mask)
 
-                self.img_path_drop_mask = img_mask
-                self.bev_path_drop_mask = bev_mask
+                # self.img_path_drop_mask = img_mask
+                # self.bev_path_drop_mask = bev_mask
 
                 # Overwrite the division factor
-                fusion_mean_div_factor = img_mask + bev_mask
+                fusion_mean_div_factor = self.img_path_drop_mask + self.bev_path_drop_mask
 
         with tf.variable_scope('proposal_roi_pooling'):
 
@@ -487,8 +498,12 @@ class RpnModel(model.DetectionModel):
                     iou_threshold=self._nms_iou_thresh)
 
                 top_anchors = tf.gather(regressed_anchors, top_indices)
+                top_anchors = tf.reshape(top_anchors, [self._nms_size, 6])
+
                 top_objectness_softmax = tf.gather(objectness_scores,
                                                    top_indices)
+                top_objectness_softmax = tf.reshape(top_objectness_softmax, [self._nms_size])
+                
                 # top_offsets = tf.gather(offsets, top_indices)
                 # top_objectness = tf.gather(objectness, top_indices)
 
@@ -607,6 +622,19 @@ class RpnModel(model.DetectionModel):
 
         return predictions
 
+    def preprocess_img(self, img):
+        """ Preprocess image of any size to desired size: 
+            self._img_pixel_size: input_config.img_dims_h,input_config.img_dims_w
+        Args:
+            img: input image, nparray of shape [?,?,3]
+        
+        Returns:
+            resized imnage
+        """ 
+        resized_image = cv2.resize(img, (self._img_pixel_size[1],self._img_pixel_size[0]))
+        return resized_image
+
+
     def create_feed_dict(self, sample_index=None):
         """ Fills in the placeholders with the actual input values.
             Currently, only a batch size of 1 is supported
@@ -637,6 +665,7 @@ class RpnModel(model.DetectionModel):
                 if self._train_val_test == "train":
                     # Get the a random sample from the remaining epoch
                     samples = self.dataset.next_batch(batch_size=1)
+                    # samples = self.dataset.load_samples([2795]) # 000003
 
                 else:  # self._train_val_test == "val"
                     # Load samples in order for validation
@@ -669,7 +698,15 @@ class RpnModel(model.DetectionModel):
             # Only handle one sample at a time for now
             sample = samples[0]
             anchors_info = sample.get(constants.KEY_ANCHORS_INFO)
-
+        # print('create_feed_dict 1', time.time() - st); st = time.time()
+        # for k, v in sample.items():
+        #     if type(v) is np.ndarray:
+        #         print(k, v.shape)
+        #     # elif k == "anchors_info":
+        #     #     print(k, v[0].shape, v[1].shape, v[2].shape, v[3].shape)
+        #     else:
+        #         print(k, v)
+        # raise Exception
         sample_name = sample.get(constants.KEY_SAMPLE_NAME)
         sample_augs = sample.get(constants.KEY_SAMPLE_AUGS)
 
@@ -680,14 +717,28 @@ class RpnModel(model.DetectionModel):
         label_boxes_3d = sample.get(constants.KEY_LABEL_BOXES_3D)
 
         # Network input data
-        image_input = sample.get(constants.KEY_IMAGE_INPUT)
+        image_input = self.preprocess_img(sample.get(constants.KEY_IMAGE_INPUT))
+        # image_input = sample.get(constants.KEY_IMAGE_INPUT)
         bev_input = sample.get(constants.KEY_BEV_INPUT)
 
+        bev_input = np.pad(bev_input, ((4,0), (0, 0), (0, 0)))
+        
         # Image shape (h, w)
         image_shape = [image_input.shape[0], image_input.shape[1]]
 
         ground_plane = sample.get(constants.KEY_GROUND_PLANE)
         stereo_calib_p2 = sample.get(constants.KEY_STEREO_CALIB_P2)
+
+        if anchors_info:
+            # anchors_info = [np.zeros(1), 0.5 * np.ones(1), -np.ones((1,6)), -np.ones(1)]
+            # print(anchors_info[0].shape[0])
+            anchors_info = (
+                np.pad(anchors_info[0], ( 0, 30000 - anchors_info[0].shape[0]) ),  # anchor_indices 0
+                np.pad(anchors_info[1], ( 0, 30000 - anchors_info[1].shape[0]), constant_values=0.5), # ious: pad 0.5
+                np.pad(anchors_info[2], ((0, 30000 - anchors_info[2].shape[0]), (0, 0)), constant_values=-1), # offsets: pad -1
+                np.pad(anchors_info[3], ( 0, 30000 - anchors_info[3].shape[0]), constant_values=-1), # ious: pad -1
+            ) 
+            # print("padding 30000", time.time() - st)
 
         # Fill the placeholders for anchor information
         self._fill_anchor_pl_inputs(anchors_info=anchors_info,
@@ -704,6 +755,11 @@ class RpnModel(model.DetectionModel):
         self._placeholder_inputs[self.PL_BEV_INPUT] = bev_input
         self._placeholder_inputs[self.PL_IMG_INPUT] = image_input
 
+        # label_boxes_3d = np.pad(label_boxes_3d, ((0, self.Max_Labels - len(label_boxes_3d)), (0,0)) ) 
+
+        label_anchors = np.pad(label_anchors, ( (0, 20 - label_anchors.shape[0]), (0, 0) ))
+        label_boxes_3d = np.pad(label_boxes_3d, ( (0, 20 - label_boxes_3d.shape[0]), (0, 0) ))
+        label_classes = np.pad(label_classes, (0, 20 - label_classes.shape[0]))
         self._placeholder_inputs[self.PL_LABEL_ANCHORS] = label_anchors
         self._placeholder_inputs[self.PL_LABEL_BOXES_3D] = label_boxes_3d
         self._placeholder_inputs[self.PL_LABEL_CLASSES] = label_classes
@@ -719,10 +775,23 @@ class RpnModel(model.DetectionModel):
         self.sample_info['sample_name'] = sample_name
         self.sample_info['rpn_mini_batch'] = anchors_info
 
+        # Path Drop Mask
+        random_values = np.random.uniform(0.0,1.0,3)
+
+        img_mask, bev_mask = self.create_path_drop_masks_np(
+            self._path_drop_probabilities[0],
+            self._path_drop_probabilities[1],
+            random_values)
+        
+        self._placeholder_inputs[self.PL_BEV_PATH_DROP_MASK] = [float(bev_mask)]
+        self._placeholder_inputs[self.PL_IMG_PATH_DROP_MASK] = [float(img_mask)]
+
+
         # Create a feed_dict and fill it with input values
         feed_dict = dict()
         for key, value in self.placeholders.items():
             feed_dict[value] = self._placeholder_inputs[key]
+            # print('{}: {}'.format(value,self._placeholder_inputs[key]))
 
         return feed_dict
 
@@ -789,7 +858,9 @@ class RpnModel(model.DetectionModel):
                 if train_cond or eval_cond:
                     sample_has_labels = False
         else:
-            sample_has_labels = False
+            # sample_has_labels = False
+            sample_has_labels = True
+            anchor_boxes_3d_to_use = all_anchor_boxes_3d
 
         if not sample_has_labels:
             # During testing, or validation with no anchor info, manually
@@ -989,3 +1060,54 @@ class RpnModel(model.DetectionModel):
 
         return final_img_mask, final_bev_mask
 
+    def create_path_drop_masks_np(self,
+                               p_img,
+                               p_bev,
+                               random_values):
+        """Determines global path drop decision based on given probabilities.
+
+        Args:
+            p_img: A tensor of float32, probability of keeping image branch
+            p_bev: A tensor of float32, probability of keeping bev branch
+            random_values: A tensor of float32 of shape [3], the results
+                of coin flips, values should range from 0.0 - 1.0.
+
+        Returns:
+            final_img_mask: A constant tensor mask containing either one or zero
+                depending on the final coin flip probability.
+            final_bev_mask: A constant tensor mask containing either one or zero
+                depending on the final coin flip probability.
+        """
+
+        keep_branch =  1
+
+        kill_branch =  0
+
+        # The logic works as follows:
+        # We have flipped 3 coins, first determines the chance of keeping
+        # the image branch, second determines keeping bev branch, the third
+        # makes the final decision in the case where both branches were killed
+        # off, otherwise the initial img and bev chances are kept.
+
+        img_chances = keep_branch if random_values[0] < p_img else kill_branch
+
+        bev_chances = keep_branch if random_values[1] < p_bev else kill_branch
+
+        # Decision to determine whether both branches were killed off
+        third_flip = img_chances + bev_chances
+
+        # Make a second choice, for the third case
+        # Here we use a 50/50 chance to keep either image or bev
+        # If its greater than 0.5, keep the image
+        img_second_flip = keep_branch if random_values[2] > 0.5 else kill_branch
+
+        # If its less than or equal to 0.5, keep bev
+        bev_second_flip = keep_branch if random_values[2] <= 0.5 else kill_branch
+
+        # Use lambda since this returns another condition and it needs to
+        # be callable
+        final_img_mask = img_chances if third_flip >= 1 else img_second_flip
+
+        final_bev_mask = bev_chances if third_flip >= 1 else bev_second_flip
+
+        return final_img_mask, final_bev_mask

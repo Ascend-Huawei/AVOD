@@ -252,10 +252,11 @@ class AvodModel(model.DetectionModel):
                 ground_plane=ground_plane,
                 is_training=self._is_training)
 
-        all_cls_logits = \
-            fc_output_layers[avod_fc_layers_builder.KEY_CLS_LOGITS]
+        # print(fc_output_layers); raise Exception
+        all_cls_logits = fc_output_layers[avod_fc_layers_builder.KEY_CLS_LOGITS]
         all_offsets = fc_output_layers[avod_fc_layers_builder.KEY_OFFSETS]
-
+        # print(all_offsets)
+        # raise Exception
         # This may be None
         all_angle_vectors = \
             fc_output_layers.get(avod_fc_layers_builder.KEY_ANGLE_VECTORS)
@@ -296,6 +297,8 @@ class AvodModel(model.DetectionModel):
                 anchor_box_list=anchor_box_list,
                 class_labels=class_labels)
 
+        # mb_class_label_indices = tf.reshape(mb_class_label_indices,[1024])
+
         # Create classification one_hot vector
         with tf.variable_scope('avod_one_hot_classes'):
             mb_classification_gt = tf.one_hot(
@@ -304,28 +307,31 @@ class AvodModel(model.DetectionModel):
                 on_value=1.0 - self._config.label_smoothing_epsilon,
                 off_value=(self._config.label_smoothing_epsilon /
                            self.dataset.num_classes))
-
+            # print(mb_class_label_indices)
+            # print(mb_classification_gt)
+            # raise Exception
+            # mb_classification_gt = tf.reshape(mb_classification_gt,[1024,2])
         # TODO: Don't create a mini batch in test mode
         # Mask predictions
         with tf.variable_scope('avod_apply_mb_mask'):
             # Classification
-            mb_classifications_logits = tf.boolean_mask(
-                all_cls_logits, mb_mask)
-            mb_classifications_softmax = tf.boolean_mask(
-                all_cls_softmax, mb_mask)
+            mb_classifications_logits = all_cls_logits
+            mb_classifications_softmax = all_cls_softmax
 
             # Offsets
-            mb_offsets = tf.boolean_mask(all_offsets, mb_mask)
-
+            mb_offsets = all_offsets
+            # print(mb_offsets)
+            # print(self._box_rep) # box_4ca
+            # raise Exception
             # Angle Vectors
             if all_angle_vectors is not None:
-                mb_angle_vectors = tf.boolean_mask(all_angle_vectors, mb_mask)
+                mb_angle_vectors = all_angle_vectors
             else:
                 mb_angle_vectors = None
 
         # Encode anchor offsets
         with tf.variable_scope('avod_encode_mb_anchors'):
-            mb_anchors = tf.boolean_mask(top_anchors, mb_mask)
+            mb_anchors = top_anchors
 
             if self._box_rep == 'box_3d':
                 # Gather corresponding ground truth anchors for each mb sample
@@ -355,7 +361,7 @@ class AvodModel(model.DetectionModel):
                     box_8c_encoder.tf_box_3d_to_box_8c(proposal_boxes_3d)
 
                 # Get mini batch offsets
-                mb_boxes_8c = tf.boolean_mask(proposal_boxes_8c, mb_mask)
+                mb_boxes_8c = proposal_boxes_8c
                 mb_offsets_gt = box_8c_encoder.tf_box_8c_to_offsets(
                     mb_boxes_8c, mb_boxes_8c_gt)
 
@@ -370,6 +376,9 @@ class AvodModel(model.DetectionModel):
 
                 # Convert gt boxes_3d -> box_4c
                 mb_boxes_3d_gt = tf.gather(boxes_3d_gt, mb_gt_indices)
+                # print(mb_boxes_3d_gt)
+                # temp = tf.reshape(mb_boxes_3d_gt, [213005212, 7])
+                # print(temp); raise Exception
                 mb_boxes_4c_gt = box_4c_encoder.tf_box_3d_to_box_4c(
                     mb_boxes_3d_gt, ground_plane)
 
@@ -381,7 +390,7 @@ class AvodModel(model.DetectionModel):
                                                        ground_plane)
 
                 # Get mini batch
-                mb_boxes_4c = tf.boolean_mask(proposal_boxes_4c, mb_mask)
+                mb_boxes_4c = proposal_boxes_4c
                 mb_offsets_gt = box_4c_encoder.tf_box_4c_to_offsets(
                     mb_boxes_4c, mb_boxes_4c_gt)
 
@@ -401,8 +410,7 @@ class AvodModel(model.DetectionModel):
         avod_mini_batch_size = \
             self.dataset.kitti_utils.mini_batch_utils.avod_mini_batch_size
         with tf.variable_scope('bev_avod_rois'):
-            mb_bev_anchors_norm = tf.boolean_mask(
-                bev_proposal_boxes_norm_tf_order, mb_mask)
+            mb_bev_anchors_norm = bev_proposal_boxes_norm_tf_order
             mb_bev_box_indices = tf.zeros_like(mb_gt_indices, dtype=tf.int32)
 
             # Show the ROIs of the BEV input density map
@@ -421,8 +429,7 @@ class AvodModel(model.DetectionModel):
 
         with tf.variable_scope('img_avod_rois'):
             # ROIs on image input
-            mb_img_anchors_norm = tf.boolean_mask(
-                img_proposal_boxes_norm_tf_order, mb_mask)
+            mb_img_anchors_norm = img_proposal_boxes_norm_tf_order
             mb_img_box_indices = tf.zeros_like(mb_gt_indices, dtype=tf.int32)
 
             # Do test ROI pooling on mini batch
@@ -508,6 +515,21 @@ class AvodModel(model.DetectionModel):
                 all_top_scores,
                 max_output_size=self._nms_size,
                 iou_threshold=self._nms_iou_threshold)
+
+            # _pad = self._nms_size - nms_indices.shape[0]
+            # if _pad > 0:
+            #     nms_indices = tf.pad(nms_indices, tf.constant([[0, _pad]]), "CONSTANT", constant_values=nms_indices[-1])
+            # print(avod_bev_boxes_tf_order)      # Tensor("avod_nms/bev_projection/stack_1:0", shape=(1024, 4), dtype=float32)
+            # print(all_top_scores)               # Tensor("avod_nms/Max:0", shape=(1024,), dtype=float32)
+            # print(nms_indices)                  # Tensor("avod_nms/non_max_suppression/NonMaxSuppressionV3:0", shape=(?,), dtype=int32)
+            # print(all_cls_logits)               # Tensor("box_predictor/cls_out/BiasAdd:0", shape=(1024, 2), dtype=float32)
+            # print(all_cls_softmax)              # Tensor("softmax/Softmax:0", shape=(1024, 2), dtype=float32)
+            # print(prediction_anchors)           # Tensor("avod_regression/stack_7:0", shape=(1024, 6), dtype=float32)
+            # print(self._box_rep)                # box_4ca
+            # raise Exception
+            # with tf.Session() as sess:
+            #     all_top_scores.eval()
+            # raise Exception
 
             # Gather predictions from NMS indices
             top_classification_logits = tf.gather(all_cls_logits,
@@ -645,12 +667,17 @@ class AvodModel(model.DetectionModel):
             mini_batch_utils = self.dataset.kitti_utils.mini_batch_utils
             mb_mask, mb_pos_mask = mini_batch_utils.sample_avod_mini_batch(
                 max_ious)
+            # mb_mask = tf.ones_like(mb_mask, dtype=bool)
+            # mb_mask = tf.ones([self._rpn_model._nms_size], dtype=tf.bool)
             mb_class_label_indices = mini_batch_utils.mask_class_label_indices(
                 mb_pos_mask, mb_mask, max_iou_indices, class_labels)
 
-            mb_gt_indices = tf.boolean_mask(max_iou_indices, mb_mask)
+            # mb_gt_indices = max_iou_indices
+            # print(max_iou_indices)
+            # print(mb_gt_indices)
+            # print(mb_mask); raise Exception
 
-        return mb_mask, mb_class_label_indices, mb_gt_indices
+        return mb_mask, mb_class_label_indices, max_iou_indices
 
     def create_feed_dict(self):
         feed_dict = self._rpn_model.create_feed_dict()

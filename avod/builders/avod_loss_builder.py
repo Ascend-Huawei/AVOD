@@ -144,11 +144,14 @@ def _get_off_ang_loss(model, offsets, offsets_gt,
         positive_mask, tf.float32)
 
     # Apply mask to only keep regression loss for positive predictions
-    pos_localization_loss = tf.reduce_sum(tf.boolean_mask(
-        anchorwise_localization_loss, positive_mask))
-    pos_orientation_loss = tf.reduce_sum(tf.boolean_mask(
-        anchorwise_orientation_loss, positive_mask))
-
+    # pos_localization_loss = tf.reduce_sum(tf.boolean_mask(
+    #     anchorwise_localization_loss, positive_mask))
+    # pos_orientation_loss = tf.reduce_sum(tf.boolean_mask(
+    #     anchorwise_orientation_loss, positive_mask))
+    pos_localization_loss = tf.reduce_sum(tf.multiply(
+        anchorwise_localization_loss, pos_classification_floats))
+    pos_orientation_loss = tf.reduce_sum(tf.multiply(
+        anchorwise_orientation_loss, pos_classification_floats))
     # Combine regression losses
     combined_reg_loss = pos_localization_loss + pos_orientation_loss
 
@@ -156,22 +159,26 @@ def _get_off_ang_loss(model, offsets, offsets_gt,
         # Normalize by the number of positive/desired classes
         # only if we have any positives
         num_positives = tf.reduce_sum(pos_classification_floats)
-        pos_div_cond = tf.not_equal(num_positives, 0)
+        # pos_div_cond = tf.not_equal(num_positives, 0)
 
-        offset_loss_norm = tf.cond(
-            pos_div_cond,
-            lambda: pos_localization_loss / num_positives,
-            lambda: tf.constant(0.0))
+        offset_loss_norm = tf.math.divide_no_nan(pos_localization_loss,num_positives)
+        ang_loss_norm = tf.math.divide_no_nan(pos_orientation_loss,num_positives)
+        final_reg_loss = tf.math.divide_no_nan(combined_reg_loss,num_positives)
 
-        ang_loss_norm = tf.cond(
-            pos_div_cond,
-            lambda: pos_orientation_loss / num_positives,
-            lambda: tf.constant(0.0))
+        # offset_loss_norm = tf.cond(
+        #     pos_div_cond,
+        #     lambda: pos_localization_loss / num_positives,
+        #     lambda: tf.constant(0.0))
 
-        final_reg_loss = tf.cond(
-            pos_div_cond,
-            lambda: combined_reg_loss / num_positives,
-            lambda: tf.constant(0.0))
+        # ang_loss_norm = tf.cond(
+        #     pos_div_cond,
+        #     lambda: pos_orientation_loss / num_positives,
+        #     lambda: tf.constant(0.0))
+
+        # final_reg_loss = tf.cond(
+        #     pos_div_cond,
+        #     lambda: combined_reg_loss / num_positives,
+        #     lambda: tf.constant(0.0))
 
     # Add summary scalars
     if model._train_val_test == 'train':

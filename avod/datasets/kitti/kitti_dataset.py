@@ -4,6 +4,7 @@ from npu_bridge.npu_init import *
 import itertools
 import fnmatch
 import os
+import time
 
 import numpy as np
 import cv2
@@ -239,6 +240,7 @@ class KittiDataset:
         """
         sample_dicts = []
         for sample_idx in indices:
+            st = time.time()
             sample = self.sample_list[sample_idx]
             sample_name = sample.name
 
@@ -269,7 +271,7 @@ class KittiDataset:
                 label_anchors = np.zeros((1, 6))
                 label_boxes_3d = np.zeros((1, 7))
                 label_classes = np.zeros(1)
-
+            # print('load_samples 1', time.time() - st); st = time.time()
             img_idx = int(sample_name)
 
             # Load image (BGR -> RGB)
@@ -278,6 +280,7 @@ class KittiDataset:
             rgb_image = cv_bgr_image[..., :: -1]
             image_shape = rgb_image.shape[0:2]
             image_input = rgb_image
+            # print('load_samples 2', time.time() - st); st = time.time()
 
             # Get ground plane
             ground_plane = obj_utils.get_road_plane(int(sample_name),
@@ -290,6 +293,7 @@ class KittiDataset:
             point_cloud = self.kitti_utils.get_point_cloud(self.bev_source,
                                                            img_idx,
                                                            image_shape)
+            # print('load_samples 3', time.time() - st); st = time.time()
 
             # Augmentation (Flipping)
             if kitti_aug.AUG_FLIPPING in sample.augs:
@@ -337,14 +341,17 @@ class KittiDataset:
                 else:
                     label_anchors = box_3d_encoder.box_3d_to_anchor(
                         label_boxes_3d, ortho_rotate=True)
+            # print('load_samples 4', time.time() - st); st = time.time()
 
             # Create BEV maps
             bev_images = self.kitti_utils.create_bev_maps(
                 point_cloud, ground_plane)
+            # print('load_samples 5.1', time.time() - st); st = time.time()
 
             height_maps = bev_images.get('height_maps')
             density_map = bev_images.get('density_map')
             bev_input = np.dstack((*height_maps, density_map))
+            # print('load_samples 5.2', time.time() - st); st = time.time()
 
             sample_dict = {
                 constants.KEY_LABEL_BOXES_3D: label_boxes_3d,
@@ -364,6 +371,8 @@ class KittiDataset:
                 constants.KEY_SAMPLE_AUGS: sample.augs
             }
             sample_dicts.append(sample_dict)
+            # print('load_samples 5.3', time.time() - st); st = time.time()
+
 
         return sample_dicts
 
@@ -383,7 +392,6 @@ class KittiDataset:
         Returns:
             list of dictionaries containing sample information
         """
-
         # Create empty set of samples
         samples_in_batch = []
 
@@ -402,12 +410,14 @@ class KittiDataset:
             rest_num_examples = self.num_samples - start
 
             # Append those samples to the current batch
+            st = time.time()
             samples_in_batch.extend(
                 self.load_samples(np.arange(start, self.num_samples)))
-
+            # print('next_batch 1', time.time() - st); st = time.time()
             # Shuffle the data
             if shuffle:
                 self._shuffle_samples()
+            # print('next_batch 2', time.time() - st); st = time.time()
 
             # Start next epoch
             start = 0
@@ -416,13 +426,18 @@ class KittiDataset:
 
             # Append the rest of the batch
             samples_in_batch.extend(self.load_samples(np.arange(start, end)))
+            # print('next_batch 3', time.time() - st); st = time.time()
 
         else:
+            st = time.time()
             self._index_in_epoch += batch_size
             end = self._index_in_epoch
-
+            # print("start, end", start, end)
             # Append the samples in the range to the batch
-            samples_in_batch.extend(self.load_samples(np.arange(start, end)))
+            tmp = self.load_samples(np.arange(start, end))
+            # print('next_batch 4', time.time() - st); st = time.time()
+            samples_in_batch.extend(tmp)
+            # print('next_batch 5', time.time() - st); st = time.time()
 
         return samples_in_batch
 

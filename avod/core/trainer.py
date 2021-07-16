@@ -163,7 +163,7 @@ def train(model, train_config):
 
         # Save checkpoint
 
-        if step % checkpoint_interval == 0 and step != 0:
+        if step % checkpoint_interval == 0:
             global_step = tf.train.global_step(sess,
                                                global_step_tensor)
             saver.save(sess,

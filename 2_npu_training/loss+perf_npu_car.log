@@ -1,0 +1,1942 @@
+Script started on 2021-06-17 10:46:35+0800
+(base) jiayan@601a1d5c-1000-4406-921b-167aaee0a8f5:~/avod/avod_npu_20210604062633$ conda deactivate
+jiayan@601a1d5c-1000-4406-921b-167aaee0a8f5:~/avod/avod_npu_20210604062633$ bash run.sh 
+/home/jiayan/avod/avod_npu_20210604062633
+DEVICE_INDEX 2
+RANK_ID 
+DEVICE_ID 2
+/home/jiayan/avod/avod_npu_20210604062633
+WARNING:tensorflow:From /home/HwHiAiUser/Ascend/tfplugin/latest/tfplugin/python/site-packages/npu_bridge/estimator/npu/npu_optimizer.py:281: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+WARNING:tensorflow:
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+/home/jiayan/.local/lib/python3.7/site-packages/tensorflow_core/python/framework/indexed_slices.py:424: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+2021-06-17 10:47:08.905460: W tensorflow/core/platform/profile_utils/cpu_utils.cc:98] Failed to find bogomips in /proc/cpuinfo; cannot determine CPU frequency
+2021-06-17 10:47:08.916419: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0xaaaaff215ef0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2021-06-17 10:47:08.916504: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2021-06-17 10:47:38.520181: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SOURCE is null.
+2021-06-17 10:47:38.520267: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SINK is null.
+2021-06-17 10:47:38.528975: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node save/restore_all is null.
+2021-06-17 10:47:47.876010: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SOURCE is null.
+2021-06-17 10:47:47.876132: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SINK is null.
+Starting from step 0 / 120000
+2021-06-17 10:47:48.770090: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SOURCE is null.
+2021-06-17 10:47:48.770194: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SINK is null.
+Step 0 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00000000
+2021-06-17 10:48:13.037910: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SOURCE is null.
+2021-06-17 10:48:13.038013: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SINK is null.
+2021-06-17 10:48:13.044224: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv1/conv1_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.044387: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/range output 0 is [?], unknown shape.
+2021-06-17 10:48:13.044479: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Where output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.044516: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Where_1 output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.044577: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/ExpandDims_1 output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.044667: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/RandomShuffle output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.044700: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/RandomShuffle_1 output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.044765: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/mul output 0 is [?,30000], unknown shape.
+2021-06-17 10:48:13.044794: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv1/conv1_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.044844: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:48:13.044869: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/range output 0 is [?], unknown shape.
+2021-06-17 10:48:13.044894: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Reshape_2 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.044914: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/range_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.044962: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045057: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv1/conv1_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.045121: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045144: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045236: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045257: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul_2 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045312: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv2/conv2_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.045355: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Slice output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045383: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv1/conv1_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.045445: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ToInt32 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045542: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones_like output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045604: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv2/conv2_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.045658: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045739: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/DynamicStitch output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045772: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv2/conv2_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.045830: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Equal output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045913: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Cast output 0 is [?], unknown shape.
+2021-06-17 10:48:13.045981: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv3/conv3_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046029: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv2/conv2_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046177: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv3/conv3_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046286: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Slice_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.046319: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv3/conv3_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046390: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ToInt32_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.046443: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv3/conv3_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046492: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones_like_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.046563: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul_3 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.046599: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv3/conv3_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046665: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/DynamicStitch_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.046744: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Equal_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.046811: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv4/conv4_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046840: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/LogicalOr_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.046867: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv3/conv3_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.046930: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask/Where output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.047008: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask/Squeeze output 0 is [?], unknown shape.
+2021-06-17 10:48:13.047070: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv4/conv4_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.047123: W tf_adapter/util/infershape_util.cc:337] The shape of node ground_truth_mini_batch/boolean_mask_1/GatherV2 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.047148: W tf_adapter/util/infershape_util.cc:337] The shape of node ground_truth_mini_batch/boolean_mask/GatherV2 output 0 is [?,2], unknown shape.
+2021-06-17 10:48:13.047240: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/strided_slice output 0 is [?], unknown shape.
+2021-06-17 10:48:13.047269: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/Reshape output 0 is [?,2], unknown shape.
+2021-06-17 10:48:13.047305: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv4/conv4_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.047432: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv4/conv4_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.047579: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv4/conv4_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.047658: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg/Reshape_1 output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.047712: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/upconv3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.047836: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv4/conv4_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.047999: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/pyramid_fusion3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048034: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/upconv3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048176: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/upconv2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048287: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/pyramid_fusion3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048419: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/pyramid_fusion2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048462: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/upconv2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048587: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/upconv1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048710: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/pyramid_fusion2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048848: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/pyramid_fusion1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.048891: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/upconv1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.049094: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_bottleneck/bottleneck/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.049140: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/pyramid_fusion1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.049291: W tf_adapter/util/infershape_util.cc:337] The shape of node img_bottleneck/bottleneck/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:48:13.049435: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.049459: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.049525: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/truediv_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.049542: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/truediv_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.049622: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.049639: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.049666: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.049681: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.049875: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.049895: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.049922: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.049937: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050300: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050323: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050368: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_3_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050385: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_3_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050404: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050419: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050456: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_2_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050471: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_2_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050503: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_4_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050517: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_4_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050541: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_5_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050555: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_5_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050595: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050611: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050631: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050645: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050663: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_2_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.050677: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_2_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.050853: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask/GatherV2 output 0 is [?,2], unknown shape.
+2021-06-17 10:48:13.050886: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask_1/GatherV2 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.050931: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/Reshape_1 output 0 is [?,2], unknown shape.
+2021-06-17 10:48:13.050962: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/sub output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051035: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051052: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.051072: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Abs output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051117: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Abs_grad/Sign output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051172: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Square output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051199: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Less output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051223: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/sub_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051273: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/mul output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051294: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051308: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.051329: W tf_adapter/util/infershape_util.cc:337] The shape of node proposals/nms/non_max_suppression/NonMaxSuppressionV3 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051354: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.051374: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051388: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.051417: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Select_grad/zeros_like output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051442: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Select output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051470: W tf_adapter/util/infershape_util.cc:337] The shape of node proposals/nms/GatherV2 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.051492: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051518: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg output 1 is [?,?], unknown shape.
+2021-06-17 10:48:13.051554: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Sum output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051604: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/mul_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051697: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051714: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.051739: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/mul output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051800: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:48:13.051817: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:48:13.051983: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/objectness/Loss/Sum_grad/Tile output 0 is [?], unknown shape.
+2021-06-17 10:48:13.052013: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Sum_grad/Tile output 0 is [?], unknown shape.
+2021-06-17 10:48:13.052162: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg_grad/ExpandDims output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.052187: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/Mul output 0 is [?], unknown shape.
+2021-06-17 10:48:13.052244: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg_grad/mul output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.052264: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.052342: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask/GatherV2_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.052364: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:48:13.052486: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask/Reshape_grad/Reshape/tensor output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.052511: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/Mul output 0 is [?], unknown shape.
+2021-06-17 10:48:13.052589: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.052694: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Sum_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.052821: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Sum_grad/Tile output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.052907: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/cls_fc8/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.052923: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Select_grad/Select output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.052945: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Select_grad/Select_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053054: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.053077: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/Mul_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053172: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/Reshape output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053194: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:48:13.053275: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc7_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.053296: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/Reshape_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053478: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Square_grad/Mul output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053567: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Square_grad/Mul_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053688: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/AddN output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053779: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/cls_fc7/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.053797: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Abs_grad/mul output 0 is [?,6], unknown shape.
+2021-06-17 10:48:13.053929: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.053954: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Where output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.054008: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask_1/GatherV2_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.054029: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/RandomShuffle output 0 is [?,1], unknown shape.
+2021-06-17 10:48:13.054073: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc6_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.054093: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask_1/Reshape_grad/Reshape/tensor output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.054114: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054289: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Slice output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054327: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/cls_fc6/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.054347: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/ToInt32 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054398: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/ones_like output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054436: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/mul_1 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054471: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/DynamicStitch output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054508: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Equal output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054541: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Cast_2 output 0 is [?], unknown shape.
+2021-06-17 10:48:13.054787: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/cls_out/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.055600: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/avod_encode_mb_anchors/concat_1_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.055659: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/off_out/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.055699: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/ang_out/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.056095: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/fc8/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.056440: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/fc7/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.056716: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/fc6/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.057328: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/avod_projection/img/concat_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.057585: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/nms/GatherV2_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.057615: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack/value output 0 is [?,?], unknown shape.
+2021-06-17 10:48:13.057638: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 0 is [?], unknown shape.
+2021-06-17 10:48:13.057654: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 1 is [?], unknown shape.
+2021-06-17 10:48:13.057668: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 2 is [?], unknown shape.
+2021-06-17 10:48:13.057681: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 3 is [?], unknown shape.
+2021-06-17 10:48:13.057694: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 4 is [?], unknown shape.
+2021-06-17 10:48:13.057707: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 5 is [?], unknown shape.
+2021-06-17 10:48:13.057730: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057780: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057797: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_2_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057843: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_3_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057863: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_4_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057881: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_5_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057927: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057947: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.057966: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_2_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.058101: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/reg_fc8/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.058169: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc7_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.058292: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/reg_fc7/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.058370: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc6_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.058491: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/reg_fc6/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.058564: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/truediv_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.058610: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:48:13.058629: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:48:13.058837: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_bottleneck/bottleneck/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.058857: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_bottleneck/bottleneck/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.059105: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/pyramid_fusion1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.059139: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/pyramid_fusion1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.059460: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/upconv1/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.059495: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/upconv1/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.059768: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/pyramid_fusion2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.059814: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/pyramid_fusion2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.060175: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/upconv2/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.060223: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/upconv2/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.060508: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/pyramid_fusion3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.060553: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/pyramid_fusion3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.060912: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/upconv3/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.060958: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/upconv3/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.061229: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv4/conv4_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.061275: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv4/conv4_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.061558: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv4/conv4_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.061600: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv4/conv4_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.061897: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv4/conv4_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.061939: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv4/conv4_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.062357: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv3/conv3_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.062395: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv3/conv3_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.062662: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv3/conv3_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.062695: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv3/conv3_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.062971: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv3/conv3_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.063012: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv3/conv3_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.063425: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv2/conv2_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.063461: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv2/conv2_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.063730: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv2/conv2_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.063764: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv2/conv2_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.064162: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv1/conv1_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:48:13.064199: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv1/conv1_2/Conv2D_grad/tuple/group_deps is null.
+Step 0, Total Loss 22.621, Time Elapsed 22.187 s
+2021-06-17 10:50:12.667282: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SOURCE is null.
+2021-06-17 10:50:12.667376: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SINK is null.
+2021-06-17 10:50:12.674250: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv1/conv1_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.674435: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/range output 0 is [?], unknown shape.
+2021-06-17 10:50:12.674521: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Where output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.674561: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Where_1 output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.674628: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/ExpandDims_1 output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.674729: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/RandomShuffle output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.674769: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/RandomShuffle_1 output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.674843: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/mul output 0 is [?,30000], unknown shape.
+2021-06-17 10:50:12.674874: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv1/conv1_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.674930: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:50:12.674953: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/range output 0 is [?], unknown shape.
+2021-06-17 10:50:12.674979: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Reshape_2 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.674998: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/range_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675052: W tf_adapter/util/infershape_util.cc:337] The shape of node proposal_roi_pooling/box_indices/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675162: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv1/conv1_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.675237: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675261: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675366: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675389: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul_2 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675451: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv2/conv2_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.675497: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Slice output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675531: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv1/conv1_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.675600: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ToInt32 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675686: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones_like output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675738: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv2/conv2_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.675782: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675860: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/DynamicStitch output 0 is [?], unknown shape.
+2021-06-17 10:50:12.675895: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv2/conv2_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.675947: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Equal output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676030: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Cast output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676104: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv3/conv3_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.676154: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv2/conv2_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.676307: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv3/conv3_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.676406: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Slice_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676438: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv3/conv3_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.676508: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ToInt32_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676554: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv3/conv3_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.676595: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/ones_like_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676673: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/mul_3 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676700: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv3/conv3_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.676763: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/DynamicStitch_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676843: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/Equal_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676907: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv4/conv4_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.676939: W tf_adapter/util/infershape_util.cc:337] The shape of node mini_batch/LogicalOr_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.676965: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv3/conv3_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.677026: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask/Where output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.677104: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask/Squeeze output 0 is [?], unknown shape.
+2021-06-17 10:50:12.677154: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv4/conv4_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.677202: W tf_adapter/util/infershape_util.cc:337] The shape of node ground_truth_mini_batch/boolean_mask_1/GatherV2 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.677228: W tf_adapter/util/infershape_util.cc:337] The shape of node ground_truth_mini_batch/boolean_mask/GatherV2 output 0 is [?,2], unknown shape.
+2021-06-17 10:50:12.677322: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/strided_slice output 0 is [?], unknown shape.
+2021-06-17 10:50:12.677350: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/Reshape output 0 is [?,2], unknown shape.
+2021-06-17 10:50:12.677375: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv4/conv4_1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.677487: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/conv4/conv4_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.677639: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv4/conv4_2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.677716: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg/Reshape_1 output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.677762: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/upconv3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.677890: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/conv4/conv4_3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678047: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/pyramid_fusion3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678084: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/upconv3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678217: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/upconv2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678319: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/pyramid_fusion3/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678452: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/pyramid_fusion2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678486: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/upconv2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678607: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/upconv1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678707: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/pyramid_fusion2/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678839: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_vgg_pyr/pyramid_fusion1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.678877: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/upconv1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.679077: W tf_adapter/util/infershape_util.cc:337] The shape of node bev_bottleneck/bottleneck/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.679117: W tf_adapter/util/infershape_util.cc:337] The shape of node img_vgg_pyr/pyramid_fusion1/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.679270: W tf_adapter/util/infershape_util.cc:337] The shape of node img_bottleneck/bottleneck/BatchNorm/FusedBatchNormV3 output 5 is ?, unknown shape.
+2021-06-17 10:50:12.679399: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.679422: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.679487: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/truediv_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.679502: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/truediv_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.679580: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.679596: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.679627: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.679641: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc6_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.679823: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.679841: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.679873: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.679887: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc7_drop/dropout/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680266: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680291: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680328: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_3_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680342: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_3_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680363: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680377: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680409: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_2_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680423: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_2_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680457: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_4_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680499: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_4_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680542: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_5_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680561: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_5_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680591: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680604: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680623: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680637: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680655: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_2_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.680668: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_2_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.680837: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask/GatherV2 output 0 is [?,2], unknown shape.
+2021-06-17 10:50:12.680874: W tf_adapter/util/infershape_util.cc:337] The shape of node prediction_mini_batch/boolean_mask_1/GatherV2 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.680911: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/Reshape_1 output 0 is [?,2], unknown shape.
+2021-06-17 10:50:12.680943: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/sub output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681008: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681024: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.681048: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Abs output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681074: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Abs_grad/Sign output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681120: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Square output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681151: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Less output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681176: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/sub_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681212: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/mul output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681233: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681247: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.681269: W tf_adapter/util/infershape_util.cc:337] The shape of node proposals/nms/non_max_suppression/NonMaxSuppressionV3 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681293: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.681313: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681327: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.681344: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Select_grad/zeros_like output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681368: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Select output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681395: W tf_adapter/util/infershape_util.cc:337] The shape of node proposals/nms/GatherV2 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.681416: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681433: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg output 1 is [?,?], unknown shape.
+2021-06-17 10:50:12.681464: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/Sum output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681520: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/Loss/mul_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681603: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681619: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.681643: W tf_adapter/util/infershape_util.cc:337] The shape of node rpn_losses/regression/mul output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681697: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/BroadcastGradientArgs output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681713: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/BroadcastGradientArgs output 1 is [?], unknown shape.
+2021-06-17 10:50:12.681876: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/objectness/Loss/Sum_grad/Tile output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681905: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Sum_grad/Tile output 0 is [?], unknown shape.
+2021-06-17 10:50:12.681970: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg_grad/ExpandDims output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.682001: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/Mul output 0 is [?], unknown shape.
+2021-06-17 10:50:12.682046: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/objectness/Loss/softmax_cross_entropy_with_logits_sg_grad/mul output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.682065: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.682143: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask/GatherV2_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.682165: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/mul_grad/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:50:12.682282: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask/Reshape_grad/Reshape/tensor output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.682310: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/Mul output 0 is [?], unknown shape.
+2021-06-17 10:50:12.682387: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.682487: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Sum_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.682607: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Sum_grad/Tile output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.682689: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/cls_fc8/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.682704: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Select_grad/Select output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.682726: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Select_grad/Select_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.682828: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.682850: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/Mul_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.682939: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_1_grad/Reshape output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.682961: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:50:12.683041: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc7_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.683062: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/mul_grad/Reshape_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.683227: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Square_grad/Mul output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.683310: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Square_grad/Mul_1 output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.683432: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/AddN output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.683514: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/cls_fc7/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.683531: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/Abs_grad/mul output 0 is [?,6], unknown shape.
+2021-06-17 10:50:12.683665: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/rpn_losses/regression/Loss/sub_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.683689: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Where output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.683752: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask_1/GatherV2_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.683774: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/RandomShuffle output 0 is [?,1], unknown shape.
+2021-06-17 10:50:12.683823: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/cls_fc6_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.683845: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/prediction_mini_batch/boolean_mask_1/Reshape_grad/Reshape/tensor output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.683865: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Reshape output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684063: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Slice output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684120: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/cls_fc6/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.684143: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/ToInt32 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684205: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/ones_like output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684246: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/mul_1 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684288: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/DynamicStitch output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684329: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Equal output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684369: W tf_adapter/util/infershape_util.cc:337] The shape of node avod_create_mb_mask/Cast_2 output 0 is [?], unknown shape.
+2021-06-17 10:50:12.684674: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/cls_out/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.685629: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/avod_encode_mb_anchors/concat_1_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.685692: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/off_out/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.685741: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/ang_out/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.686174: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/fc8/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.686553: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/fc7/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.686858: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/box_predictor/fc6/MatMul_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.687552: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/avod_projection/img/concat_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.687859: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/nms/GatherV2_grad/Reshape output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.687896: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack/value output 0 is [?,?], unknown shape.
+2021-06-17 10:50:12.687922: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 0 is [?], unknown shape.
+2021-06-17 10:50:12.687938: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 1 is [?], unknown shape.
+2021-06-17 10:50:12.687950: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 2 is [?], unknown shape.
+2021-06-17 10:50:12.687962: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 3 is [?], unknown shape.
+2021-06-17 10:50:12.687976: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 4 is [?], unknown shape.
+2021-06-17 10:50:12.687992: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/stack_grad/unstack output 5 is [?], unknown shape.
+2021-06-17 10:50:12.688015: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688035: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688053: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_2_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688124: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_3_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688146: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_4_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688164: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/add_5_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688216: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688235: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_1_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688256: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposals/decoding/mul_2_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688418: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/reg_fc8/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.688496: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc7_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688634: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/reg_fc7/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.688718: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/anchor_predictor/reg_fc6_drop/dropout/mul_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688859: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/anchor_predictor/reg_fc6/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.688940: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/truediv_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.688993: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/Sum output 0 is ?, unknown shape.
+2021-06-17 10:50:12.689014: W tf_adapter/util/infershape_util.cc:337] The shape of node train_op/gradients/proposal_roi_fusion/Add_grad/Sum_1 output 0 is ?, unknown shape.
+2021-06-17 10:50:12.689248: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_bottleneck/bottleneck/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.689272: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_bottleneck/bottleneck/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.689556: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/pyramid_fusion1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.689592: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/pyramid_fusion1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.690000: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/upconv1/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.690048: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/upconv1/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.690381: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/pyramid_fusion2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.690433: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/pyramid_fusion2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.690837: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/upconv2/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.690885: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/upconv2/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.691184: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/pyramid_fusion3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.691232: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/pyramid_fusion3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.691614: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/upconv3/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.691665: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/upconv3/conv2d_transpose_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.691952: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv4/conv4_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.692002: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv4/conv4_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.692322: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv4/conv4_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.692369: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv4/conv4_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.692685: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv4/conv4_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.692730: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv4/conv4_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.693170: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv3/conv3_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.693211: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv3/conv3_3/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.693494: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv3/conv3_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.693530: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv3/conv3_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.693821: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv3/conv3_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.693867: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv3/conv3_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.694302: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv2/conv2_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.694345: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv2/conv2_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.694643: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv2/conv2_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.694680: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv2/conv2_1/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.695083: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/img_vgg_pyr/conv1/conv1_2/Conv2D_grad/tuple/group_deps is null.
+2021-06-17 10:50:12.695120: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node train_op/gradients/bev_vgg_pyr/conv1/conv1_2/Conv2D_grad/tuple/group_deps is null.
+Step 10, Total Loss 10.062, Time Elapsed 183.928 s
+Step 20, Total Loss 0.896, Time Elapsed 32.239 s
+Step 30, Total Loss 38.382, Time Elapsed 37.463 s
+Step 40, Total Loss 25.667, Time Elapsed 29.506 s
+Step 50, Total Loss 0.824, Time Elapsed 31.864 s
+Step 60, Total Loss 0.650, Time Elapsed 25.780 s
+Step 70, Total Loss 14.753, Time Elapsed 39.478 s
+Step 80, Total Loss 21.543, Time Elapsed 30.766 s
+Step 90, Total Loss 3.655, Time Elapsed 18.721 s
+Step 100, Total Loss 14.521, Time Elapsed 34.846 s
+Step 110, Total Loss 0.902, Time Elapsed 33.540 s
+Step 120, Total Loss 23.166, Time Elapsed 20.595 s
+Step 130, Total Loss 32.235, Time Elapsed 25.718 s
+Step 140, Total Loss 10.050, Time Elapsed 32.201 s
+Step 150, Total Loss 6.724, Time Elapsed 28.971 s
+Step 160, Total Loss 8.504, Time Elapsed 38.113 s
+Step 170, Total Loss 0.294, Time Elapsed 27.539 s
+Step 180, Total Loss 0.592, Time Elapsed 32.473 s
+Step 190, Total Loss 16.202, Time Elapsed 34.950 s
+Step 200, Total Loss 7.831, Time Elapsed 36.548 s
+Step 210, Total Loss 0.500, Time Elapsed 36.485 s
+Step 220, Total Loss 0.380, Time Elapsed 34.032 s
+Step 230, Total Loss 11.281, Time Elapsed 28.645 s
+Step 240, Total Loss 26.468, Time Elapsed 39.460 s
+Step 250, Total Loss 0.534, Time Elapsed 37.901 s
+Step 260, Total Loss 10.432, Time Elapsed 37.640 s
+Step 270, Total Loss 10.808, Time Elapsed 34.592 s
+Step 280, Total Loss 0.692, Time Elapsed 36.740 s
+Step 290, Total Loss 6.886, Time Elapsed 33.706 s
+Step 300, Total Loss 20.896, Time Elapsed 37.270 s
+Step 310, Total Loss 0.545, Time Elapsed 31.987 s
+Step 320, Total Loss 0.405, Time Elapsed 32.174 s
+Step 330, Total Loss 0.723, Time Elapsed 36.113 s
+Step 340, Total Loss 6.197, Time Elapsed 35.254 s
+Step 350, Total Loss 12.294, Time Elapsed 25.196 s
+Step 360, Total Loss 9.405, Time Elapsed 23.754 s
+Step 370, Total Loss 0.317, Time Elapsed 24.302 s
+Step 380, Total Loss 3.565, Time Elapsed 39.233 s
+Step 390, Total Loss 5.011, Time Elapsed 26.918 s
+Step 400, Total Loss 2.805, Time Elapsed 30.415 s
+Step 410, Total Loss 10.956, Time Elapsed 30.230 s
+Step 420, Total Loss 13.530, Time Elapsed 32.882 s
+Step 430, Total Loss 5.786, Time Elapsed 38.203 s
+Step 440, Total Loss 3.431, Time Elapsed 37.658 s
+Step 450, Total Loss 0.325, Time Elapsed 38.929 s
+Step 460, Total Loss 5.493, Time Elapsed 38.764 s
+Step 470, Total Loss 6.435, Time Elapsed 39.434 s
+Step 480, Total Loss 3.946, Time Elapsed 37.699 s
+Step 490, Total Loss 0.341, Time Elapsed 34.435 s
+Step 500, Total Loss 2.066, Time Elapsed 37.828 s
+Step 510, Total Loss 4.307, Time Elapsed 39.624 s
+Step 520, Total Loss 6.367, Time Elapsed 39.028 s
+Step 530, Total Loss 2.634, Time Elapsed 36.238 s
+Step 540, Total Loss 4.843, Time Elapsed 34.659 s
+Step 550, Total Loss 5.711, Time Elapsed 34.844 s
+Step 560, Total Loss 3.867, Time Elapsed 31.867 s
+Step 570, Total Loss 2.772, Time Elapsed 39.289 s
+Step 580, Total Loss 0.338, Time Elapsed 31.436 s
+Step 590, Total Loss 4.212, Time Elapsed 34.563 s
+Step 600, Total Loss 0.441, Time Elapsed 31.427 s
+Step 610, Total Loss 3.168, Time Elapsed 34.969 s
+Step 620, Total Loss 3.867, Time Elapsed 39.212 s
+Step 630, Total Loss 4.398, Time Elapsed 35.832 s
+Step 640, Total Loss 4.774, Time Elapsed 32.233 s
+Step 650, Total Loss 4.695, Time Elapsed 21.318 s
+Step 660, Total Loss 4.695, Time Elapsed 34.524 s
+Step 670, Total Loss 0.484, Time Elapsed 28.726 s
+Step 680, Total Loss 9.707, Time Elapsed 28.100 s
+Step 690, Total Loss 3.510, Time Elapsed 40.958 s
+Step 700, Total Loss 3.104, Time Elapsed 39.322 s
+Step 710, Total Loss 4.941, Time Elapsed 39.373 s
+Step 720, Total Loss 8.129, Time Elapsed 40.368 s
+Step 730, Total Loss 18.992, Time Elapsed 20.959 s
+Step 740, Total Loss 4.337, Time Elapsed 24.893 s
+Step 750, Total Loss 4.217, Time Elapsed 38.991 s
+Step 760, Total Loss 2.992, Time Elapsed 42.392 s
+Step 770, Total Loss 0.357, Time Elapsed 34.217 s
+Step 780, Total Loss 0.804, Time Elapsed 36.715 s
+Step 790, Total Loss 5.734, Time Elapsed 28.259 s
+Step 800, Total Loss 1.548, Time Elapsed 36.258 s
+Step 810, Total Loss 0.441, Time Elapsed 39.213 s
+Step 820, Total Loss 4.936, Time Elapsed 43.079 s
+Step 830, Total Loss 5.040, Time Elapsed 36.305 s
+Step 840, Total Loss 2.960, Time Elapsed 37.481 s
+Step 850, Total Loss 0.441, Time Elapsed 25.368 s
+Step 860, Total Loss 0.331, Time Elapsed 20.156 s
+Step 870, Total Loss 3.618, Time Elapsed 17.747 s
+Step 880, Total Loss 4.013, Time Elapsed 17.545 s
+Step 890, Total Loss 8.721, Time Elapsed 19.458 s
+Step 900, Total Loss 3.914, Time Elapsed 33.166 s
+Step 910, Total Loss 3.618, Time Elapsed 40.140 s
+Step 920, Total Loss 0.410, Time Elapsed 30.825 s
+Step 930, Total Loss 4.512, Time Elapsed 24.930 s
+Step 940, Total Loss 2.809, Time Elapsed 32.412 s
+Step 950, Total Loss 0.363, Time Elapsed 33.923 s
+Step 960, Total Loss 2.410, Time Elapsed 39.001 s
+Step 970, Total Loss 0.354, Time Elapsed 43.322 s
+Step 980, Total Loss 2.862, Time Elapsed 34.857 s
+Step 990, Total Loss 3.886, Time Elapsed 35.070 s
+2021-06-17 11:46:01.209423: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SOURCE is null.
+2021-06-17 11:46:01.209512: W tf_adapter/util/infershape_util.cc:313] The InferenceContext of node _SINK is null.
+Step 1000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00001000
+Step 1000, Total Loss 0.441, Time Elapsed 52.542 s
+Step 1010, Total Loss 3.083, Time Elapsed 21.581 s
+Step 1020, Total Loss 3.958, Time Elapsed 21.593 s
+Step 1030, Total Loss 2.350, Time Elapsed 18.359 s
+Step 1040, Total Loss 9.543, Time Elapsed 30.859 s
+Step 1050, Total Loss 5.742, Time Elapsed 21.318 s
+Step 1060, Total Loss 5.003, Time Elapsed 17.840 s
+Step 1070, Total Loss 0.662, Time Elapsed 17.833 s
+Step 1080, Total Loss 0.489, Time Elapsed 29.707 s
+Step 1090, Total Loss 8.782, Time Elapsed 30.017 s
+Step 1100, Total Loss 3.261, Time Elapsed 22.059 s
+Step 1110, Total Loss 0.660, Time Elapsed 26.141 s
+Step 1120, Total Loss 3.688, Time Elapsed 27.017 s
+Step 1130, Total Loss 5.505, Time Elapsed 22.614 s
+Step 1140, Total Loss 5.553, Time Elapsed 24.948 s
+Step 1150, Total Loss 10.916, Time Elapsed 27.705 s
+Step 1160, Total Loss 4.364, Time Elapsed 36.886 s
+Step 1170, Total Loss 10.145, Time Elapsed 32.140 s
+Step 1180, Total Loss 3.291, Time Elapsed 29.725 s
+Step 1190, Total Loss 2.194, Time Elapsed 24.453 s
+Step 1200, Total Loss 2.520, Time Elapsed 27.530 s
+Step 1210, Total Loss 3.331, Time Elapsed 28.562 s
+Step 1220, Total Loss 5.245, Time Elapsed 26.649 s
+Step 1230, Total Loss 2.874, Time Elapsed 34.829 s
+Step 1240, Total Loss 4.845, Time Elapsed 36.117 s
+Step 1250, Total Loss 0.494, Time Elapsed 35.471 s
+Step 1260, Total Loss 2.598, Time Elapsed 32.825 s
+Step 1270, Total Loss 7.913, Time Elapsed 36.679 s
+Step 1280, Total Loss 6.328, Time Elapsed 39.621 s
+Step 1290, Total Loss 3.761, Time Elapsed 31.889 s
+Step 1300, Total Loss 2.820, Time Elapsed 33.670 s
+Step 1310, Total Loss 5.627, Time Elapsed 35.255 s
+Step 1320, Total Loss 0.420, Time Elapsed 37.099 s
+Step 1330, Total Loss 0.355, Time Elapsed 37.522 s
+Step 1340, Total Loss 5.421, Time Elapsed 34.978 s
+Step 1350, Total Loss 3.209, Time Elapsed 21.604 s
+Step 1360, Total Loss 4.143, Time Elapsed 23.358 s
+Step 1370, Total Loss 4.542, Time Elapsed 31.189 s
+Step 1380, Total Loss 7.795, Time Elapsed 21.214 s
+Step 1390, Total Loss 6.445, Time Elapsed 27.668 s
+Step 1400, Total Loss 3.566, Time Elapsed 24.445 s
+Step 1410, Total Loss 0.352, Time Elapsed 37.073 s
+Step 1420, Total Loss 4.757, Time Elapsed 32.083 s
+Step 1430, Total Loss 3.525, Time Elapsed 27.571 s
+Step 1440, Total Loss 5.212, Time Elapsed 29.603 s
+Step 1450, Total Loss 5.761, Time Elapsed 30.792 s
+Step 1460, Total Loss 2.457, Time Elapsed 30.665 s
+Step 1470, Total Loss 2.249, Time Elapsed 33.119 s
+Step 1480, Total Loss 3.014, Time Elapsed 27.690 s
+Step 1490, Total Loss 3.944, Time Elapsed 35.065 s
+Step 1500, Total Loss 4.033, Time Elapsed 34.951 s
+Step 1510, Total Loss 4.276, Time Elapsed 32.454 s
+Step 1520, Total Loss 5.956, Time Elapsed 26.240 s
+Step 1530, Total Loss 7.992, Time Elapsed 33.612 s
+Step 1540, Total Loss 2.391, Time Elapsed 38.515 s
+Step 1550, Total Loss 0.351, Time Elapsed 36.773 s
+Step 1560, Total Loss 2.210, Time Elapsed 38.603 s
+Step 1570, Total Loss 0.278, Time Elapsed 38.156 s
+Step 1580, Total Loss 3.444, Time Elapsed 29.475 s
+Step 1590, Total Loss 2.928, Time Elapsed 30.480 s
+Step 1600, Total Loss 8.384, Time Elapsed 32.334 s
+Step 1610, Total Loss 0.497, Time Elapsed 38.256 s
+Step 1620, Total Loss 3.353, Time Elapsed 37.782 s
+Step 1630, Total Loss 2.334, Time Elapsed 32.275 s
+Step 1640, Total Loss 3.275, Time Elapsed 32.975 s
+Step 1650, Total Loss 4.453, Time Elapsed 32.455 s
+Step 1660, Total Loss 14.008, Time Elapsed 30.703 s
+Step 1670, Total Loss 6.694, Time Elapsed 27.697 s
+Step 1680, Total Loss 2.557, Time Elapsed 30.939 s
+Step 1690, Total Loss 3.110, Time Elapsed 34.986 s
+Step 1700, Total Loss 16.519, Time Elapsed 34.725 s
+Step 1710, Total Loss 9.403, Time Elapsed 34.989 s
+Step 1720, Total Loss 0.150, Time Elapsed 33.047 s
+Step 1730, Total Loss 8.867, Time Elapsed 33.522 s
+Step 1740, Total Loss 0.325, Time Elapsed 38.956 s
+Step 1750, Total Loss 4.021, Time Elapsed 37.858 s
+Step 1760, Total Loss 0.307, Time Elapsed 33.222 s
+Step 1770, Total Loss 3.744, Time Elapsed 32.240 s
+Step 1780, Total Loss 4.103, Time Elapsed 33.737 s
+Step 1790, Total Loss 6.629, Time Elapsed 36.420 s
+Step 1800, Total Loss 0.572, Time Elapsed 41.949 s
+Step 1810, Total Loss 0.313, Time Elapsed 31.836 s
+Step 1820, Total Loss 3.928, Time Elapsed 34.053 s
+Step 1830, Total Loss 8.341, Time Elapsed 38.005 s
+Step 1840, Total Loss 4.057, Time Elapsed 36.881 s
+Step 1850, Total Loss 2.749, Time Elapsed 33.796 s
+Step 1860, Total Loss 4.171, Time Elapsed 34.289 s
+Step 1870, Total Loss 6.293, Time Elapsed 32.540 s
+Step 1880, Total Loss 3.472, Time Elapsed 30.651 s
+Step 1890, Total Loss 3.301, Time Elapsed 36.710 s
+Step 1900, Total Loss 3.576, Time Elapsed 37.672 s
+Step 1910, Total Loss 4.007, Time Elapsed 28.029 s
+Step 1920, Total Loss 10.597, Time Elapsed 24.628 s
+Step 1930, Total Loss 3.289, Time Elapsed 34.937 s
+Step 1940, Total Loss 13.496, Time Elapsed 34.700 s
+Step 1950, Total Loss 7.015, Time Elapsed 33.527 s
+Step 1960, Total Loss 5.019, Time Elapsed 31.917 s
+Step 1970, Total Loss 2.413, Time Elapsed 27.132 s
+Step 1980, Total Loss 4.911, Time Elapsed 31.386 s
+Step 1990, Total Loss 7.844, Time Elapsed 34.248 s
+Step 2000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00002000
+Step 2000, Total Loss 0.132, Time Elapsed 43.753 s
+Step 2010, Total Loss 3.925, Time Elapsed 39.145 s
+Step 2020, Total Loss 5.546, Time Elapsed 30.602 s
+Step 2030, Total Loss 4.522, Time Elapsed 32.408 s
+Step 2040, Total Loss 11.741, Time Elapsed 37.903 s
+Step 2050, Total Loss 3.986, Time Elapsed 37.701 s
+Step 2060, Total Loss 1.981, Time Elapsed 39.375 s
+Step 2070, Total Loss 3.062, Time Elapsed 35.491 s
+Step 2080, Total Loss 2.042, Time Elapsed 36.495 s
+Step 2090, Total Loss 3.064, Time Elapsed 31.576 s
+Step 2100, Total Loss 9.675, Time Elapsed 40.575 s
+Step 2110, Total Loss 6.208, Time Elapsed 36.410 s
+Step 2120, Total Loss 13.778, Time Elapsed 33.844 s
+Step 2130, Total Loss 0.409, Time Elapsed 32.687 s
+Step 2140, Total Loss 3.827, Time Elapsed 31.291 s
+Step 2150, Total Loss 2.231, Time Elapsed 35.603 s
+Step 2160, Total Loss 6.239, Time Elapsed 32.535 s
+Step 2170, Total Loss 3.436, Time Elapsed 31.947 s
+Step 2180, Total Loss 4.333, Time Elapsed 29.412 s
+Step 2190, Total Loss 3.145, Time Elapsed 29.501 s
+Step 2200, Total Loss 4.963, Time Elapsed 37.610 s
+Step 2210, Total Loss 2.226, Time Elapsed 38.690 s
+Step 2220, Total Loss 2.847, Time Elapsed 35.598 s
+Step 2230, Total Loss 3.044, Time Elapsed 38.245 s
+Step 2240, Total Loss 3.089, Time Elapsed 36.313 s
+Step 2250, Total Loss 14.734, Time Elapsed 35.965 s
+Step 2260, Total Loss 2.790, Time Elapsed 37.524 s
+Step 2270, Total Loss 2.688, Time Elapsed 28.218 s
+Step 2280, Total Loss 1.216, Time Elapsed 32.586 s
+Step 2290, Total Loss 1.940, Time Elapsed 32.213 s
+Step 2300, Total Loss 3.875, Time Elapsed 41.479 s
+Step 2310, Total Loss 2.291, Time Elapsed 40.661 s
+Step 2320, Total Loss 2.426, Time Elapsed 42.394 s
+Step 2330, Total Loss 4.271, Time Elapsed 35.285 s
+Step 2340, Total Loss 2.466, Time Elapsed 33.411 s
+Step 2350, Total Loss 4.190, Time Elapsed 37.866 s
+Step 2360, Total Loss 2.269, Time Elapsed 33.961 s
+Step 2370, Total Loss 2.807, Time Elapsed 38.029 s
+Step 2380, Total Loss 3.334, Time Elapsed 24.255 s
+Step 2390, Total Loss 0.452, Time Elapsed 34.421 s
+Step 2400, Total Loss 23.883, Time Elapsed 34.084 s
+Step 2410, Total Loss 21.666, Time Elapsed 29.040 s
+Step 2420, Total Loss 2.747, Time Elapsed 39.283 s
+Step 2430, Total Loss 2.007, Time Elapsed 29.100 s
+Step 2440, Total Loss 2.565, Time Elapsed 22.736 s
+Step 2450, Total Loss 0.351, Time Elapsed 34.356 s
+Step 2460, Total Loss 4.723, Time Elapsed 27.381 s
+Step 2470, Total Loss 3.897, Time Elapsed 36.427 s
+Step 2480, Total Loss 3.273, Time Elapsed 36.495 s
+Step 2490, Total Loss 17.935, Time Elapsed 31.201 s
+Step 2500, Total Loss 26.791, Time Elapsed 39.456 s
+Step 2510, Total Loss 14.947, Time Elapsed 42.441 s
+Step 2520, Total Loss 4.490, Time Elapsed 41.198 s
+Step 2530, Total Loss 17.912, Time Elapsed 35.789 s
+Step 2540, Total Loss 3.690, Time Elapsed 26.403 s
+Step 2550, Total Loss 4.601, Time Elapsed 37.616 s
+Step 2560, Total Loss 1.871, Time Elapsed 39.645 s
+Step 2570, Total Loss 3.612, Time Elapsed 32.034 s
+Step 2580, Total Loss 2.214, Time Elapsed 28.593 s
+Step 2590, Total Loss 4.491, Time Elapsed 26.209 s
+Step 2600, Total Loss 3.730, Time Elapsed 38.563 s
+Step 2610, Total Loss 1.249, Time Elapsed 35.113 s
+Step 2620, Total Loss 4.441, Time Elapsed 20.543 s
+Step 2630, Total Loss 2.436, Time Elapsed 23.293 s
+Step 2640, Total Loss 2.708, Time Elapsed 37.244 s
+Step 2650, Total Loss 3.141, Time Elapsed 36.852 s
+Step 2660, Total Loss 10.552, Time Elapsed 40.228 s
+Step 2670, Total Loss 2.635, Time Elapsed 26.912 s
+Step 2680, Total Loss 2.135, Time Elapsed 26.482 s
+Step 2690, Total Loss 1.688, Time Elapsed 36.404 s
+Step 2700, Total Loss 11.277, Time Elapsed 30.975 s
+Step 2710, Total Loss 3.251, Time Elapsed 25.250 s
+Step 2720, Total Loss 4.264, Time Elapsed 24.948 s
+Step 2730, Total Loss 0.921, Time Elapsed 40.414 s
+Step 2740, Total Loss 8.306, Time Elapsed 36.836 s
+Step 2750, Total Loss 8.234, Time Elapsed 32.755 s
+Step 2760, Total Loss 2.192, Time Elapsed 27.064 s
+Step 2770, Total Loss 9.119, Time Elapsed 26.568 s
+Step 2780, Total Loss 3.343, Time Elapsed 26.934 s
+Step 2790, Total Loss 2.699, Time Elapsed 37.607 s
+Step 2800, Total Loss 3.428, Time Elapsed 34.359 s
+Step 2810, Total Loss 1.799, Time Elapsed 39.279 s
+Step 2820, Total Loss 2.608, Time Elapsed 41.194 s
+Step 2830, Total Loss 2.094, Time Elapsed 42.231 s
+Step 2840, Total Loss 2.477, Time Elapsed 38.982 s
+Step 2850, Total Loss 2.498, Time Elapsed 37.328 s
+Step 2860, Total Loss 5.409, Time Elapsed 36.892 s
+Step 2870, Total Loss 4.843, Time Elapsed 33.503 s
+Step 2880, Total Loss 2.105, Time Elapsed 36.063 s
+Step 2890, Total Loss 2.273, Time Elapsed 30.376 s
+Step 2900, Total Loss 1.767, Time Elapsed 31.509 s
+Step 2910, Total Loss 24.223, Time Elapsed 38.596 s
+Step 2920, Total Loss 2.631, Time Elapsed 33.633 s
+Step 2930, Total Loss 1.533, Time Elapsed 32.377 s
+Step 2940, Total Loss 2.337, Time Elapsed 36.891 s
+Step 2950, Total Loss 2.601, Time Elapsed 37.887 s
+Step 2960, Total Loss 2.357, Time Elapsed 39.599 s
+Step 2970, Total Loss 2.599, Time Elapsed 37.860 s
+Step 2980, Total Loss 0.359, Time Elapsed 36.816 s
+Step 2990, Total Loss 4.014, Time Elapsed 35.418 s
+Step 3000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00003000
+Step 3000, Total Loss 4.581, Time Elapsed 50.831 s
+Step 3010, Total Loss 2.098, Time Elapsed 35.488 s
+Step 3020, Total Loss 3.047, Time Elapsed 34.782 s
+Step 3030, Total Loss 0.354, Time Elapsed 37.532 s
+Step 3040, Total Loss 7.171, Time Elapsed 36.937 s
+Step 3050, Total Loss 4.127, Time Elapsed 38.642 s
+Step 3060, Total Loss 1.297, Time Elapsed 36.674 s
+Step 3070, Total Loss 2.785, Time Elapsed 28.333 s
+Step 3080, Total Loss 1.915, Time Elapsed 29.912 s
+Step 3090, Total Loss 3.927, Time Elapsed 28.813 s
+Step 3100, Total Loss 1.028, Time Elapsed 28.256 s
+Step 3110, Total Loss 3.075, Time Elapsed 27.047 s
+Step 3120, Total Loss 3.187, Time Elapsed 36.100 s
+Step 3130, Total Loss 5.361, Time Elapsed 30.918 s
+Step 3140, Total Loss 1.111, Time Elapsed 37.538 s
+Step 3150, Total Loss 2.663, Time Elapsed 35.803 s
+Step 3160, Total Loss 9.606, Time Elapsed 39.088 s
+Step 3170, Total Loss 17.040, Time Elapsed 39.027 s
+Step 3180, Total Loss 10.289, Time Elapsed 37.847 s
+Step 3190, Total Loss 0.553, Time Elapsed 36.774 s
+Step 3200, Total Loss 3.317, Time Elapsed 32.690 s
+Step 3210, Total Loss 3.807, Time Elapsed 36.492 s
+Step 3220, Total Loss 4.664, Time Elapsed 37.349 s
+Step 3230, Total Loss 3.622, Time Elapsed 38.910 s
+Step 3240, Total Loss 6.623, Time Elapsed 35.513 s
+Step 3250, Total Loss 2.833, Time Elapsed 35.711 s
+Step 3260, Total Loss 26.564, Time Elapsed 31.687 s
+Step 3270, Total Loss 2.628, Time Elapsed 40.707 s
+Step 3280, Total Loss 3.895, Time Elapsed 40.019 s
+Step 3290, Total Loss 1.663, Time Elapsed 39.743 s
+Step 3300, Total Loss 2.803, Time Elapsed 41.488 s
+Step 3310, Total Loss 3.208, Time Elapsed 40.879 s
+Step 3320, Total Loss 3.772, Time Elapsed 34.516 s
+Step 3330, Total Loss 4.241, Time Elapsed 19.593 s
+Step 3340, Total Loss 4.845, Time Elapsed 36.743 s
+Step 3350, Total Loss 3.387, Time Elapsed 36.667 s
+Step 3360, Total Loss 6.992, Time Elapsed 34.157 s
+Step 3370, Total Loss 2.265, Time Elapsed 33.199 s
+Step 3380, Total Loss 7.929, Time Elapsed 18.696 s
+Step 3390, Total Loss 1.664, Time Elapsed 37.073 s
+Step 3400, Total Loss 2.194, Time Elapsed 39.522 s
+Step 3410, Total Loss 3.873, Time Elapsed 34.485 s
+Step 3420, Total Loss 2.333, Time Elapsed 32.814 s
+Step 3430, Total Loss 2.419, Time Elapsed 36.487 s
+Step 3440, Total Loss 2.505, Time Elapsed 33.918 s
+Step 3450, Total Loss 6.191, Time Elapsed 35.180 s
+Step 3460, Total Loss 2.057, Time Elapsed 38.115 s
+Step 3470, Total Loss 2.711, Time Elapsed 39.281 s
+Step 3480, Total Loss 4.573, Time Elapsed 38.966 s
+Step 3490, Total Loss 2.277, Time Elapsed 34.609 s
+Step 3500, Total Loss 3.337, Time Elapsed 40.003 s
+Step 3510, Total Loss 2.292, Time Elapsed 35.266 s
+Step 3520, Total Loss 3.304, Time Elapsed 32.992 s
+Step 3530, Total Loss 3.682, Time Elapsed 35.648 s
+Step 3540, Total Loss 2.363, Time Elapsed 36.058 s
+Step 3550, Total Loss 6.827, Time Elapsed 34.532 s
+Step 3560, Total Loss 3.453, Time Elapsed 38.354 s
+Step 3570, Total Loss 3.398, Time Elapsed 38.766 s
+Step 3580, Total Loss 2.228, Time Elapsed 36.037 s
+Step 3590, Total Loss 1.978, Time Elapsed 36.634 s
+Step 3600, Total Loss 3.553, Time Elapsed 30.145 s
+Step 3610, Total Loss 2.241, Time Elapsed 36.659 s
+Step 3620, Total Loss 2.708, Time Elapsed 32.671 s
+Step 3630, Total Loss 4.634, Time Elapsed 36.282 s
+tryme201^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B                                                                        Step 3640, Total Loss 5.323, Time Elapsed 37.997 s
+Step 3650, Total Loss 4.166, Time Elapsed 30.917 s
+Step 3660, Total Loss 6.528, Time Elapsed 28.571 s
+Step 3670, Total Loss 4.474, Time Elapsed 29.746 s
+Step 3680, Total Loss 5.705, Time Elapsed 29.193 s
+Step 3690, Total Loss 0.483, Time Elapsed 26.291 s
+Step 3700, Total Loss 2.315, Time Elapsed 29.831 s
+Step 3710, Total Loss 3.574, Time Elapsed 29.512 s
+Step 3720, Total Loss 1.359, Time Elapsed 25.803 s
+Step 3730, Total Loss 14.407, Time Elapsed 24.075 s
+Step 3740, Total Loss 2.835, Time Elapsed 25.896 s
+Step 3750, Total Loss 1.852, Time Elapsed 25.518 s
+Step 3760, Total Loss 13.476, Time Elapsed 26.690 s
+Step 3770, Total Loss 2.852, Time Elapsed 24.627 s
+Step 3780, Total Loss 3.633, Time Elapsed 24.280 s
+Step 3790, Total Loss 5.758, Time Elapsed 25.617 s
+Step 3800, Total Loss 1.947, Time Elapsed 31.039 s
+Step 3810, Total Loss 1.825, Time Elapsed 30.598 s
+Step 3820, Total Loss 3.104, Time Elapsed 30.965 s
+Step 3830, Total Loss 2.775, Time Elapsed 37.822 s
+Step 3840, Total Loss 0.839, Time Elapsed 38.750 s
+Step 3850, Total Loss 1.831, Time Elapsed 36.052 s
+Step 3860, Total Loss 3.486, Time Elapsed 34.695 s
+Step 3870, Total Loss 2.738, Time Elapsed 34.245 s
+Step 3880, Total Loss 8.938, Time Elapsed 39.198 s
+Step 3890, Total Loss 4.070, Time Elapsed 39.537 s
+Step 3900, Total Loss 2.589, Time Elapsed 38.188 s
+Step 3910, Total Loss 2.987, Time Elapsed 38.191 s
+Step 3920, Total Loss 1.317, Time Elapsed 32.997 s
+Step 3930, Total Loss 2.672, Time Elapsed 33.059 s
+Step 3940, Total Loss 5.289, Time Elapsed 19.809 s
+Step 3950, Total Loss 7.281, Time Elapsed 25.796 s
+Step 3960, Total Loss 2.169, Time Elapsed 34.082 s
+Step 3970, Total Loss 3.269, Time Elapsed 36.111 s
+Step 3980, Total Loss 2.194, Time Elapsed 33.444 s
+Step 3990, Total Loss 0.629, Time Elapsed 40.055 s
+Step 4000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00004000
+Step 4000, Total Loss 3.527, Time Elapsed 49.504 s
+Step 4010, Total Loss 0.367, Time Elapsed 36.831 s
+Step 4020, Total Loss 4.844, Time Elapsed 37.953 s
+Step 4030, Total Loss 0.155, Time Elapsed 45.230 s
+Step 4040, Total Loss 9.731, Time Elapsed 38.675 s
+Step 4050, Total Loss 5.002, Time Elapsed 37.467 s
+Step 4060, Total Loss 2.092, Time Elapsed 34.457 s
+Step 4070, Total Loss 2.463, Time Elapsed 44.598 s
+Step 4080, Total Loss 6.918, Time Elapsed 33.375 s
+Step 4090, Total Loss 1.996, Time Elapsed 43.603 s
+Step 4100, Total Loss 1.819, Time Elapsed 39.556 s
+Step 4110, Total Loss 2.050, Time Elapsed 40.919 s
+Step 4120, Total Loss 0.906, Time Elapsed 37.848 s
+Step 4130, Total Loss 4.381, Time Elapsed 35.958 s
+Step 4140, Total Loss 3.124, Time Elapsed 42.233 s
+Step 4150, Total Loss 3.504, Time Elapsed 36.502 s
+Step 4160, Total Loss 1.100, Time Elapsed 39.042 s
+Step 4170, Total Loss 2.412, Time Elapsed 25.538 s
+Step 4180, Total Loss 3.799, Time Elapsed 23.542 s
+Step 4190, Total Loss 3.099, Time Elapsed 37.446 s
+Step 4200, Total Loss 1.750, Time Elapsed 30.509 s
+Step 4210, Total Loss 4.040, Time Elapsed 31.524 s
+Step 4220, Total Loss 17.091, Time Elapsed 17.868 s
+Step 4230, Total Loss 6.484, Time Elapsed 23.005 s
+Step 4240, Total Loss 1.724, Time Elapsed 18.388 s
+Step 4250, Total Loss 0.905, Time Elapsed 20.873 s
+Step 4260, Total Loss 4.281, Time Elapsed 31.257 s
+Step 4270, Total Loss 2.038, Time Elapsed 29.142 s
+Step 4280, Total Loss 2.743, Time Elapsed 38.901 s
+Step 4290, Total Loss 2.476, Time Elapsed 41.377 s
+Step 4300, Total Loss 4.679, Time Elapsed 27.412 s
+Step 4310, Total Loss 2.485, Time Elapsed 28.179 s
+Step 4320, Total Loss 3.322, Time Elapsed 17.944 s
+Step 4330, Total Loss 1.064, Time Elapsed 25.069 s
+Step 4340, Total Loss 1.702, Time Elapsed 21.599 s
+Step 4350, Total Loss 1.430, Time Elapsed 34.228 s
+Step 4360, Total Loss 2.201, Time Elapsed 48.311 s
+Step 4370, Total Loss 1.076, Time Elapsed 36.867 s
+Step 4380, Total Loss 2.996, Time Elapsed 26.556 s
+Step 4390, Total Loss 2.092, Time Elapsed 23.189 s
+Step 4400, Total Loss 3.491, Time Elapsed 22.712 s
+Step 4410, Total Loss 3.173, Time Elapsed 23.565 s
+Step 4420, Total Loss 2.174, Time Elapsed 17.524 s
+Step 4430, Total Loss 3.377, Time Elapsed 17.021 s
+Step 4440, Total Loss 2.266, Time Elapsed 20.351 s
+Step 4450, Total Loss 4.833, Time Elapsed 42.883 s
+Step 4460, Total Loss 3.588, Time Elapsed 26.801 s
+Step 4470, Total Loss 1.066, Time Elapsed 22.722 s
+Step 4480, Total Loss 2.390, Time Elapsed 19.857 s
+Step 4490, Total Loss 2.420, Time Elapsed 46.713 s
+Step 4500, Total Loss 1.830, Time Elapsed 38.125 s
+Step 4510, Total Loss 1.332, Time Elapsed 22.924 s
+Step 4520, Total Loss 7.798, Time Elapsed 36.961 s
+Step 4530, Total Loss 5.347, Time Elapsed 36.214 s
+Step 4540, Total Loss 16.602, Time Elapsed 35.411 s
+Step 4550, Total Loss 4.396, Time Elapsed 40.312 s
+Step 4560, Total Loss 3.164, Time Elapsed 28.876 s
+Step 4570, Total Loss 2.315, Time Elapsed 17.356 s
+Step 4580, Total Loss 2.983, Time Elapsed 27.598 s
+Step 4590, Total Loss 1.704, Time Elapsed 24.243 s
+Step 4600, Total Loss 4.542, Time Elapsed 24.373 s
+Step 4610, Total Loss 3.010, Time Elapsed 18.344 s
+Step 4620, Total Loss 2.264, Time Elapsed 38.209 s
+Step 4630, Total Loss 0.926, Time Elapsed 35.866 s
+Step 4640, Total Loss 4.003, Time Elapsed 19.584 s
+Step 4650, Total Loss 3.259, Time Elapsed 26.551 s
+Step 4660, Total Loss 1.837, Time Elapsed 25.319 s
+Step 4670, Total Loss 2.797, Time Elapsed 36.869 s
+Step 4680, Total Loss 2.717, Time Elapsed 33.771 s
+Step 4690, Total Loss 4.451, Time Elapsed 16.449 s
+Step 4700, Total Loss 4.757, Time Elapsed 17.538 s
+Step 4710, Total Loss 3.155, Time Elapsed 34.685 s
+Step 4720, Total Loss 3.110, Time Elapsed 29.445 s
+Step 4730, Total Loss 1.214, Time Elapsed 16.838 s
+Step 4740, Total Loss 2.448, Time Elapsed 31.562 s
+Step 4750, Total Loss 4.807, Time Elapsed 39.677 s
+Step 4760, Total Loss 1.769, Time Elapsed 26.262 s
+Step 4770, Total Loss 2.399, Time Elapsed 22.929 s
+Step 4780, Total Loss 1.459, Time Elapsed 17.537 s
+Step 4790, Total Loss 10.024, Time Elapsed 19.823 s
+Step 4800, Total Loss 3.221, Time Elapsed 17.137 s
+Step 4810, Total Loss 2.038, Time Elapsed 19.884 s
+Step 4820, Total Loss 1.328, Time Elapsed 17.266 s
+Step 4830, Total Loss 2.517, Time Elapsed 38.954 s
+Step 4840, Total Loss 1.604, Time Elapsed 25.918 s
+Step 4850, Total Loss 1.861, Time Elapsed 38.411 s
+Step 4860, Total Loss 3.987, Time Elapsed 26.413 s
+Step 4870, Total Loss 1.518, Time Elapsed 16.549 s
+Step 4880, Total Loss 2.158, Time Elapsed 16.342 s
+Step 4890, Total Loss 2.769, Time Elapsed 21.826 s
+Step 4900, Total Loss 1.742, Time Elapsed 33.590 s
+Step 4910, Total Loss 2.379, Time Elapsed 31.629 s
+Step 4920, Total Loss 2.528, Time Elapsed 41.778 s
+Step 4930, Total Loss 8.792, Time Elapsed 29.224 s
+Step 4940, Total Loss 1.489, Time Elapsed 40.491 s
+Step 4950, Total Loss 20.785, Time Elapsed 41.407 s
+Step 4960, Total Loss 1.276, Time Elapsed 32.313 s
+Step 4970, Total Loss 2.280, Time Elapsed 18.688 s
+Step 4980, Total Loss 0.106, Time Elapsed 16.818 s
+Step 4990, Total Loss 1.317, Time Elapsed 17.723 s
+Step 5000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00005000
+Step 5000, Total Loss 1.618, Time Elapsed 36.389 s
+Step 5010, Total Loss 1.798, Time Elapsed 38.352 s
+Step 5020, Total Loss 1.760, Time Elapsed 43.605 s
+Step 5030, Total Loss 3.868, Time Elapsed 39.003 s
+Step 5040, Total Loss 1.931, Time Elapsed 32.807 s
+Step 5050, Total Loss 1.708, Time Elapsed 34.056 s
+Step 5060, Total Loss 3.286, Time Elapsed 36.451 s
+Step 5070, Total Loss 2.915, Time Elapsed 36.657 s
+Step 5080, Total Loss 2.133, Time Elapsed 39.052 s
+Step 5090, Total Loss 2.043, Time Elapsed 38.797 s
+Step 5100, Total Loss 3.850, Time Elapsed 38.757 s
+Step 5110, Total Loss 1.900, Time Elapsed 38.699 s
+Step 5120, Total Loss 3.298, Time Elapsed 36.135 s
+Step 5130, Total Loss 12.979, Time Elapsed 32.328 s
+Step 5140, Total Loss 0.811, Time Elapsed 35.692 s
+Step 5150, Total Loss 4.421, Time Elapsed 39.515 s
+Step 5160, Total Loss 1.724, Time Elapsed 34.548 s
+Step 5170, Total Loss 1.864, Time Elapsed 38.336 s
+Step 5180, Total Loss 5.524, Time Elapsed 41.182 s
+Step 5190, Total Loss 2.214, Time Elapsed 39.919 s
+Step 5200, Total Loss 1.323, Time Elapsed 32.689 s
+Step 5210, Total Loss 3.011, Time Elapsed 28.301 s
+Step 5220, Total Loss 3.930, Time Elapsed 19.062 s
+Step 5230, Total Loss 0.960, Time Elapsed 36.194 s
+Step 5240, Total Loss 2.445, Time Elapsed 36.418 s
+Step 5250, Total Loss 4.384, Time Elapsed 28.105 s
+Step 5260, Total Loss 1.389, Time Elapsed 33.048 s
+Step 5270, Total Loss 5.119, Time Elapsed 34.882 s
+Step 5280, Total Loss 3.952, Time Elapsed 37.363 s
+Step 5290, Total Loss 1.473, Time Elapsed 34.244 s
+Step 5300, Total Loss 1.160, Time Elapsed 35.450 s
+Step 5310, Total Loss 10.478, Time Elapsed 34.498 s
+Step 5320, Total Loss 1.995, Time Elapsed 37.408 s
+Step 5330, Total Loss 2.741, Time Elapsed 34.999 s
+Step 5340, Total Loss 2.250, Time Elapsed 38.438 s
+Step 5350, Total Loss 4.252, Time Elapsed 37.480 s
+Step 5360, Total Loss 3.616, Time Elapsed 32.120 s
+Step 5370, Total Loss 1.338, Time Elapsed 38.726 s
+Step 5380, Total Loss 5.905, Time Elapsed 38.094 s
+Step 5390, Total Loss 2.031, Time Elapsed 40.539 s
+Step 5400, Total Loss 2.286, Time Elapsed 38.479 s
+Step 5410, Total Loss 4.571, Time Elapsed 34.911 s
+Step 5420, Total Loss 5.135, Time Elapsed 38.245 s
+Step 5430, Total Loss 0.366, Time Elapsed 38.654 s
+Step 5440, Total Loss 1.900, Time Elapsed 35.179 s
+Step 5450, Total Loss 4.716, Time Elapsed 27.781 s
+Step 5460, Total Loss 2.743, Time Elapsed 35.837 s
+Step 5470, Total Loss 2.014, Time Elapsed 31.842 s
+Step 5480, Total Loss 3.672, Time Elapsed 26.897 s
+Step 5490, Total Loss 1.479, Time Elapsed 30.213 s
+Step 5500, Total Loss 2.341, Time Elapsed 29.170 s
+Step 5510, Total Loss 5.307, Time Elapsed 30.566 s
+Step 5520, Total Loss 5.870, Time Elapsed 34.810 s
+Step 5530, Total Loss 2.167, Time Elapsed 33.365 s
+Step 5540, Total Loss 3.892, Time Elapsed 42.988 s
+Step 5550, Total Loss 5.348, Time Elapsed 39.061 s
+Step 5560, Total Loss 2.018, Time Elapsed 35.143 s
+Step 5570, Total Loss 3.379, Time Elapsed 37.719 s
+Step 5580, Total Loss 16.100, Time Elapsed 38.159 s
+Step 5590, Total Loss 2.394, Time Elapsed 34.695 s
+Step 5600, Total Loss 2.395, Time Elapsed 36.915 s
+Step 5610, Total Loss 1.048, Time Elapsed 39.837 s
+Step 5620, Total Loss 3.864, Time Elapsed 35.584 s
+Step 5630, Total Loss 3.474, Time Elapsed 33.265 s
+Step 5640, Total Loss 1.639, Time Elapsed 35.557 s
+Step 5650, Total Loss 1.669, Time Elapsed 39.834 s
+Step 5660, Total Loss 2.105, Time Elapsed 32.922 s
+Step 5670, Total Loss 2.914, Time Elapsed 38.577 s
+Step 5680, Total Loss 4.612, Time Elapsed 35.599 s
+Step 5690, Total Loss 1.198, Time Elapsed 32.767 s
+Step 5700, Total Loss 2.117, Time Elapsed 34.359 s
+Step 5710, Total Loss 1.902, Time Elapsed 41.146 s
+Step 5720, Total Loss 0.991, Time Elapsed 42.147 s
+Step 5730, Total Loss 3.227, Time Elapsed 35.319 s
+Step 5740, Total Loss 2.313, Time Elapsed 35.617 s
+Step 5750, Total Loss 1.459, Time Elapsed 35.515 s
+Step 5760, Total Loss 1.543, Time Elapsed 36.772 s
+Step 5770, Total Loss 11.569, Time Elapsed 32.379 s
+Step 5780, Total Loss 1.329, Time Elapsed 41.947 s
+Step 5790, Total Loss 3.107, Time Elapsed 37.577 s
+Step 5800, Total Loss 7.103, Time Elapsed 36.164 s
+Step 5810, Total Loss 2.093, Time Elapsed 35.463 s
+Step 5820, Total Loss 2.773, Time Elapsed 38.972 s
+Step 5830, Total Loss 1.126, Time Elapsed 36.505 s
+Step 5840, Total Loss 3.614, Time Elapsed 36.124 s
+Step 5850, Total Loss 8.113, Time Elapsed 35.103 s
+Step 5860, Total Loss 3.315, Time Elapsed 38.014 s
+Step 5870, Total Loss 2.901, Time Elapsed 32.444 s
+Step 5880, Total Loss 4.447, Time Elapsed 35.871 s
+Step 5890, Total Loss 3.858, Time Elapsed 40.941 s
+Step 5900, Total Loss 1.821, Time Elapsed 36.021 s
+Step 5910, Total Loss 1.606, Time Elapsed 38.857 s
+Step 5920, Total Loss 6.033, Time Elapsed 41.665 s
+Step 5930, Total Loss 1.722, Time Elapsed 43.376 s
+Step 5940, Total Loss 4.407, Time Elapsed 35.915 s
+Step 5950, Total Loss 3.090, Time Elapsed 34.652 s
+Step 5960, Total Loss 2.649, Time Elapsed 35.852 s
+Step 5970, Total Loss 4.965, Time Elapsed 36.504 s
+Step 5980, Total Loss 2.418, Time Elapsed 42.808 s
+Step 5990, Total Loss 8.068, Time Elapsed 39.571 s
+Step 6000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00006000
+Step 6000, Total Loss 2.025, Time Elapsed 55.286 s
+Step 6010, Total Loss 5.780, Time Elapsed 39.860 s
+Step 6020, Total Loss 1.490, Time Elapsed 42.168 s
+Step 6030, Total Loss 5.866, Time Elapsed 40.937 s
+Step 6040, Total Loss 4.839, Time Elapsed 38.701 s
+Step 6050, Total Loss 3.914, Time Elapsed 20.740 s
+Step 6060, Total Loss 1.829, Time Elapsed 17.547 s
+Step 6070, Total Loss 1.617, Time Elapsed 17.838 s
+Step 6080, Total Loss 3.730, Time Elapsed 18.610 s
+Step 6090, Total Loss 4.128, Time Elapsed 18.377 s
+Step 6100, Total Loss 1.587, Time Elapsed 18.663 s
+Step 6110, Total Loss 0.090, Time Elapsed 21.488 s
+Step 6120, Total Loss 1.751, Time Elapsed 22.988 s
+Step 6130, Total Loss 2.386, Time Elapsed 21.413 s
+Step 6140, Total Loss 1.138, Time Elapsed 22.075 s
+Step 6150, Total Loss 2.411, Time Elapsed 33.374 s
+Step 6160, Total Loss 0.893, Time Elapsed 20.366 s
+Step 6170, Total Loss 2.161, Time Elapsed 28.882 s
+Step 6180, Total Loss 4.725, Time Elapsed 17.885 s
+Step 6190, Total Loss 4.343, Time Elapsed 27.028 s
+Step 6200, Total Loss 4.655, Time Elapsed 35.965 s
+Step 6210, Total Loss 4.033, Time Elapsed 36.631 s
+Step 6220, Total Loss 1.983, Time Elapsed 20.855 s
+Step 6230, Total Loss 2.352, Time Elapsed 32.989 s
+Step 6240, Total Loss 2.200, Time Elapsed 22.287 s
+Step 6250, Total Loss 3.968, Time Elapsed 29.696 s
+Step 6260, Total Loss 2.312, Time Elapsed 38.091 s
+Step 6270, Total Loss 1.750, Time Elapsed 44.368 s
+Step 6280, Total Loss 2.040, Time Elapsed 36.201 s
+Step 6290, Total Loss 5.479, Time Elapsed 37.382 s
+Step 6300, Total Loss 2.622, Time Elapsed 35.329 s
+Step 6310, Total Loss 5.882, Time Elapsed 36.783 s
+Step 6320, Total Loss 2.892, Time Elapsed 29.102 s
+Step 6330, Total Loss 3.371, Time Elapsed 32.145 s
+Step 6340, Total Loss 0.883, Time Elapsed 37.328 s
+Step 6350, Total Loss 2.939, Time Elapsed 23.162 s
+Step 6360, Total Loss 0.498, Time Elapsed 41.239 s
+Step 6370, Total Loss 2.963, Time Elapsed 33.929 s
+Step 6380, Total Loss 2.020, Time Elapsed 35.005 s
+Step 6390, Total Loss 19.831, Time Elapsed 37.372 s
+Step 6400, Total Loss 4.264, Time Elapsed 42.962 s
+Step 6410, Total Loss 4.209, Time Elapsed 34.230 s
+Step 6420, Total Loss 2.038, Time Elapsed 34.229 s
+Step 6430, Total Loss 2.707, Time Elapsed 33.421 s
+Step 6440, Total Loss 2.344, Time Elapsed 45.810 s
+Step 6450, Total Loss 12.301, Time Elapsed 36.284 s
+Step 6460, Total Loss 1.439, Time Elapsed 37.404 s
+Step 6470, Total Loss 3.102, Time Elapsed 39.096 s
+Step 6480, Total Loss 2.738, Time Elapsed 39.923 s
+Step 6490, Total Loss 2.554, Time Elapsed 33.641 s
+Step 6500, Total Loss 3.127, Time Elapsed 29.808 s
+Step 6510, Total Loss 2.635, Time Elapsed 20.515 s
+Step 6520, Total Loss 3.721, Time Elapsed 39.443 s
+Step 6530, Total Loss 2.676, Time Elapsed 41.866 s
+Step 6540, Total Loss 1.956, Time Elapsed 41.027 s
+Step 6550, Total Loss 3.369, Time Elapsed 45.615 s
+Step 6560, Total Loss 1.496, Time Elapsed 35.357 s
+Step 6570, Total Loss 3.082, Time Elapsed 24.471 s
+Step 6580, Total Loss 4.602, Time Elapsed 34.094 s
+Step 6590, Total Loss 2.398, Time Elapsed 39.286 s
+Step 6600, Total Loss 2.845, Time Elapsed 37.474 s
+Step 6610, Total Loss 0.124, Time Elapsed 38.603 s
+Step 6620, Total Loss 2.351, Time Elapsed 37.281 s
+Step 6630, Total Loss 4.660, Time Elapsed 34.861 s
+Step 6640, Total Loss 2.438, Time Elapsed 31.549 s
+Step 6650, Total Loss 2.011, Time Elapsed 42.568 s
+Step 6660, Total Loss 1.817, Time Elapsed 35.673 s
+Step 6670, Total Loss 1.898, Time Elapsed 36.613 s
+Step 6680, Total Loss 4.000, Time Elapsed 40.414 s
+Step 6690, Total Loss 5.399, Time Elapsed 40.305 s
+Step 6700, Total Loss 3.486, Time Elapsed 31.739 s
+Step 6710, Total Loss 1.547, Time Elapsed 40.460 s
+Step 6720, Total Loss 1.913, Time Elapsed 35.977 s
+Step 6730, Total Loss 5.847, Time Elapsed 41.555 s
+Step 6740, Total Loss 3.789, Time Elapsed 38.025 s
+Step 6750, Total Loss 4.125, Time Elapsed 36.553 s
+Step 6760, Total Loss 1.868, Time Elapsed 37.779 s
+Step 6770, Total Loss 2.386, Time Elapsed 37.792 s
+Step 6780, Total Loss 4.519, Time Elapsed 29.346 s
+Step 6790, Total Loss 2.209, Time Elapsed 26.294 s
+Step 6800, Total Loss 1.517, Time Elapsed 40.507 s
+Step 6810, Total Loss 3.516, Time Elapsed 44.009 s
+Step 6820, Total Loss 0.470, Time Elapsed 32.384 s
+Step 6830, Total Loss 2.076, Time Elapsed 27.059 s
+Step 6840, Total Loss 1.999, Time Elapsed 24.337 s
+Step 6850, Total Loss 2.622, Time Elapsed 38.846 s
+Step 6860, Total Loss 0.834, Time Elapsed 39.604 s
+Step 6870, Total Loss 6.184, Time Elapsed 38.629 s
+Step 6880, Total Loss 2.108, Time Elapsed 35.062 s
+Step 6890, Total Loss 2.103, Time Elapsed 39.045 s
+Step 6900, Total Loss 2.517, Time Elapsed 39.762 s
+Step 6910, Total Loss 1.974, Time Elapsed 37.049 s
+Step 6920, Total Loss 2.176, Time Elapsed 43.175 s
+Step 6930, Total Loss 2.510, Time Elapsed 40.444 s
+Step 6940, Total Loss 5.056, Time Elapsed 43.750 s
+Step 6950, Total Loss 1.917, Time Elapsed 36.835 s
+Step 6960, Total Loss 3.970, Time Elapsed 39.383 s
+Step 6970, Total Loss 1.339, Time Elapsed 41.199 s
+Step 6980, Total Loss 2.104, Time Elapsed 30.894 s
+Step 6990, Total Loss 1.832, Time Elapsed 30.111 s
+Step 7000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00007000
+Step 7000, Total Loss 5.172, Time Elapsed 57.980 s
+Step 7010, Total Loss 2.465, Time Elapsed 36.790 s
+Step 7020, Total Loss 5.211, Time Elapsed 34.712 s
+Step 7030, Total Loss 2.296, Time Elapsed 35.976 s
+Step 7040, Total Loss 3.080, Time Elapsed 26.979 s
+Step 7050, Total Loss 5.827, Time Elapsed 21.119 s
+Step 7060, Total Loss 1.925, Time Elapsed 17.753 s
+Step 7070, Total Loss 0.409, Time Elapsed 21.593 s
+Step 7080, Total Loss 3.308, Time Elapsed 18.815 s
+Step 7090, Total Loss 3.811, Time Elapsed 16.351 s
+Step 7100, Total Loss 2.529, Time Elapsed 29.024 s
+Step 7110, Total Loss 1.963, Time Elapsed 38.213 s
+Step 7120, Total Loss 1.967, Time Elapsed 27.411 s
+Step 7130, Total Loss 5.009, Time Elapsed 16.651 s
+Step 7140, Total Loss 2.721, Time Elapsed 22.210 s
+Step 7150, Total Loss 2.873, Time Elapsed 16.992 s
+Step 7160, Total Loss 0.551, Time Elapsed 18.648 s
+Step 7170, Total Loss 3.875, Time Elapsed 21.620 s
+Step 7180, Total Loss 0.979, Time Elapsed 28.445 s
+Step 7190, Total Loss 5.959, Time Elapsed 30.839 s
+Step 7200, Total Loss 1.734, Time Elapsed 29.308 s
+Step 7210, Total Loss 1.770, Time Elapsed 27.024 s
+Step 7220, Total Loss 2.462, Time Elapsed 26.805 s
+Step 7230, Total Loss 4.853, Time Elapsed 25.056 s
+Step 7240, Total Loss 1.820, Time Elapsed 33.576 s
+Step 7250, Total Loss 2.744, Time Elapsed 30.268 s
+Step 7260, Total Loss 1.473, Time Elapsed 28.007 s
+Step 7270, Total Loss 2.536, Time Elapsed 30.802 s
+Step 7280, Total Loss 2.794, Time Elapsed 43.017 s
+Step 7290, Total Loss 2.315, Time Elapsed 32.616 s
+Step 7300, Total Loss 5.513, Time Elapsed 33.669 s
+Step 7310, Total Loss 2.606, Time Elapsed 39.220 s
+Step 7320, Total Loss 4.182, Time Elapsed 34.600 s
+Step 7330, Total Loss 0.990, Time Elapsed 34.553 s
+Step 7340, Total Loss 1.502, Time Elapsed 43.482 s
+Step 7350, Total Loss 2.921, Time Elapsed 38.943 s
+Step 7360, Total Loss 1.222, Time Elapsed 27.973 s
+Step 7370, Total Loss 4.361, Time Elapsed 41.885 s
+Step 7380, Total Loss 1.951, Time Elapsed 34.999 s
+Step 7390, Total Loss 2.379, Time Elapsed 39.410 s
+Step 7400, Total Loss 2.267, Time Elapsed 40.070 s
+Step 7410, Total Loss 1.165, Time Elapsed 42.972 s
+Step 7420, Total Loss 2.456, Time Elapsed 31.573 s
+Step 7430, Total Loss 2.203, Time Elapsed 34.609 s
+Step 7440, Total Loss 3.451, Time Elapsed 42.646 s
+Step 7450, Total Loss 1.030, Time Elapsed 35.117 s
+Step 7460, Total Loss 1.546, Time Elapsed 38.611 s
+Step 7470, Total Loss 4.953, Time Elapsed 34.854 s
+Step 7480, Total Loss 2.178, Time Elapsed 36.461 s
+Step 7490, Total Loss 2.862, Time Elapsed 39.652 s
+Step 7500, Total Loss 1.238, Time Elapsed 40.417 s
+Step 7510, Total Loss 2.558, Time Elapsed 36.898 s
+Step 7520, Total Loss 3.322, Time Elapsed 33.424 s
+Step 7530, Total Loss 1.820, Time Elapsed 34.252 s
+Step 7540, Total Loss 1.495, Time Elapsed 38.094 s
+Step 7550, Total Loss 1.256, Time Elapsed 35.365 s
+Step 7560, Total Loss 2.664, Time Elapsed 40.373 s
+Step 7570, Total Loss 1.298, Time Elapsed 39.511 s
+Step 7580, Total Loss 0.850, Time Elapsed 42.908 s
+Step 7590, Total Loss 4.823, Time Elapsed 32.081 s
+Step 7600, Total Loss 4.576, Time Elapsed 38.896 s
+Step 7610, Total Loss 2.466, Time Elapsed 33.088 s
+Step 7620, Total Loss 3.037, Time Elapsed 40.507 s
+Step 7630, Total Loss 2.464, Time Elapsed 39.674 s
+Step 7640, Total Loss 1.636, Time Elapsed 39.097 s
+Step 7650, Total Loss 2.332, Time Elapsed 29.815 s
+Step 7660, Total Loss 2.030, Time Elapsed 37.063 s
+Step 7670, Total Loss 3.363, Time Elapsed 32.715 s
+Step 7680, Total Loss 3.603, Time Elapsed 38.553 s
+Step 7690, Total Loss 3.317, Time Elapsed 38.723 s
+Step 7700, Total Loss 2.048, Time Elapsed 36.482 s
+Step 7710, Total Loss 2.345, Time Elapsed 36.099 s
+Step 7720, Total Loss 5.562, Time Elapsed 35.447 s
+Step 7730, Total Loss 3.460, Time Elapsed 30.756 s
+Step 7740, Total Loss 0.750, Time Elapsed 42.123 s
+Step 7750, Total Loss 1.733, Time Elapsed 40.654 s
+Step 7760, Total Loss 2.724, Time Elapsed 38.778 s
+Step 7770, Total Loss 1.803, Time Elapsed 44.366 s
+Step 7780, Total Loss 2.598, Time Elapsed 43.949 s
+Step 7790, Total Loss 3.057, Time Elapsed 42.058 s
+Step 7800, Total Loss 26.112, Time Elapsed 35.816 s
+Step 7810, Total Loss 2.964, Time Elapsed 30.783 s
+Step 7820, Total Loss 0.116, Time Elapsed 38.086 s
+Step 7830, Total Loss 2.955, Time Elapsed 41.960 s
+Step 7840, Total Loss 2.443, Time Elapsed 28.130 s
+Step 7850, Total Loss 1.879, Time Elapsed 33.831 s
+Step 7860, Total Loss 5.371, Time Elapsed 37.489 s
+Step 7870, Total Loss 1.417, Time Elapsed 36.751 s
+Step 7880, Total Loss 1.842, Time Elapsed 39.422 s
+Step 7890, Total Loss 2.464, Time Elapsed 38.743 s
+Step 7900, Total Loss 0.935, Time Elapsed 41.932 s
+Step 7910, Total Loss 1.355, Time Elapsed 43.348 s
+Step 7920, Total Loss 10.136, Time Elapsed 45.669 s
+Step 7930, Total Loss 0.569, Time Elapsed 38.328 s
+Step 7940, Total Loss 2.726, Time Elapsed 38.390 s
+Step 7950, Total Loss 2.091, Time Elapsed 38.941 s
+Step 7960, Total Loss 2.343, Time Elapsed 34.449 s
+Step 7970, Total Loss 3.143, Time Elapsed 36.741 s
+Step 7980, Total Loss 1.951, Time Elapsed 38.543 s
+Step 7990, Total Loss 1.566, Time Elapsed 39.545 s
+Step 8000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00008000
+Step 8000, Total Loss 8.477, Time Elapsed 53.838 s
+Step 8010, Total Loss 1.370, Time Elapsed 38.385 s
+Step 8020, Total Loss 3.825, Time Elapsed 34.677 s
+Step 8030, Total Loss 2.181, Time Elapsed 33.228 s
+Step 8040, Total Loss 5.821, Time Elapsed 38.573 s
+Step 8050, Total Loss 2.149, Time Elapsed 37.527 s
+Step 8060, Total Loss 1.873, Time Elapsed 35.947 s
+Step 8070, Total Loss 2.234, Time Elapsed 36.789 s
+Step 8080, Total Loss 4.974, Time Elapsed 36.473 s
+Step 8090, Total Loss 1.354, Time Elapsed 34.587 s
+Step 8100, Total Loss 1.509, Time Elapsed 31.698 s
+Step 8110, Total Loss 1.085, Time Elapsed 33.243 s
+Step 8120, Total Loss 1.270, Time Elapsed 35.526 s
+Step 8130, Total Loss 2.451, Time Elapsed 36.417 s
+Step 8140, Total Loss 1.172, Time Elapsed 38.798 s
+Step 8150, Total Loss 1.558, Time Elapsed 43.928 s
+Step 8160, Total Loss 1.232, Time Elapsed 44.026 s
+Step 8170, Total Loss 1.353, Time Elapsed 33.854 s
+Step 8180, Total Loss 2.613, Time Elapsed 36.358 s
+Step 8190, Total Loss 1.424, Time Elapsed 40.964 s
+Step 8200, Total Loss 3.338, Time Elapsed 37.413 s
+Step 8210, Total Loss 3.105, Time Elapsed 39.960 s
+Step 8220, Total Loss 5.839, Time Elapsed 31.828 s
+Step 8230, Total Loss 3.723, Time Elapsed 37.832 s
+Step 8240, Total Loss 4.473, Time Elapsed 33.465 s
+Step 8250, Total Loss 3.037, Time Elapsed 26.354 s
+Step 8260, Total Loss 1.897, Time Elapsed 33.225 s
+Step 8270, Total Loss 1.094, Time Elapsed 36.402 s
+Step 8280, Total Loss 0.437, Time Elapsed 34.312 s
+Step 8290, Total Loss 0.101, Time Elapsed 29.499 s
+Step 8300, Total Loss 3.003, Time Elapsed 36.539 s
+Step 8310, Total Loss 2.194, Time Elapsed 31.129 s
+Step 8320, Total Loss 2.362, Time Elapsed 36.231 s
+Step 8330, Total Loss 2.183, Time Elapsed 34.307 s
+Step 8340, Total Loss 5.858, Time Elapsed 25.660 s
+Step 8350, Total Loss 2.984, Time Elapsed 29.480 s
+Step 8360, Total Loss 2.946, Time Elapsed 28.037 s
+Step 8370, Total Loss 1.362, Time Elapsed 37.394 s
+Step 8380, Total Loss 3.662, Time Elapsed 39.960 s
+Step 8390, Total Loss 0.816, Time Elapsed 34.670 s
+Step 8400, Total Loss 5.500, Time Elapsed 30.971 s
+Step 8410, Total Loss 2.764, Time Elapsed 38.518 s
+Step 8420, Total Loss 1.283, Time Elapsed 33.453 s
+Step 8430, Total Loss 1.311, Time Elapsed 38.369 s
+Step 8440, Total Loss 2.599, Time Elapsed 45.436 s
+Step 8450, Total Loss 2.218, Time Elapsed 40.136 s
+Step 8460, Total Loss 3.701, Time Elapsed 39.807 s
+Step 8470, Total Loss 1.950, Time Elapsed 36.889 s
+Step 8480, Total Loss 2.141, Time Elapsed 38.427 s
+Step 8490, Total Loss 14.129, Time Elapsed 37.332 s
+Step 8500, Total Loss 1.538, Time Elapsed 37.811 s
+Step 8510, Total Loss 5.071, Time Elapsed 28.765 s
+Step 8520, Total Loss 1.781, Time Elapsed 34.935 s
+Step 8530, Total Loss 4.765, Time Elapsed 31.691 s
+Step 8540, Total Loss 1.272, Time Elapsed 34.362 s
+Step 8550, Total Loss 1.307, Time Elapsed 33.468 s
+Step 8560, Total Loss 1.527, Time Elapsed 17.059 s
+Step 8570, Total Loss 1.326, Time Elapsed 19.253 s
+Step 8580, Total Loss 2.903, Time Elapsed 17.977 s
+Step 8590, Total Loss 1.850, Time Elapsed 20.681 s
+Step 8600, Total Loss 1.160, Time Elapsed 17.700 s
+Step 8610, Total Loss 4.327, Time Elapsed 20.519 s
+Step 8620, Total Loss 0.682, Time Elapsed 19.048 s
+Step 8630, Total Loss 2.119, Time Elapsed 23.587 s
+Step 8640, Total Loss 1.585, Time Elapsed 34.161 s
+Step 8650, Total Loss 2.180, Time Elapsed 36.222 s
+Step 8660, Total Loss 3.063, Time Elapsed 33.541 s
+Step 8670, Total Loss 1.717, Time Elapsed 42.919 s
+Step 8680, Total Loss 1.903, Time Elapsed 35.084 s
+Step 8690, Total Loss 1.644, Time Elapsed 29.079 s
+Step 8700, Total Loss 3.283, Time Elapsed 40.278 s
+Step 8710, Total Loss 1.822, Time Elapsed 35.499 s
+Step 8720, Total Loss 2.453, Time Elapsed 35.179 s
+Step 8730, Total Loss 4.293, Time Elapsed 36.353 s
+Step 8740, Total Loss 2.012, Time Elapsed 24.276 s
+Step 8750, Total Loss 1.948, Time Elapsed 37.025 s
+Step 8760, Total Loss 6.895, Time Elapsed 37.392 s
+Step 8770, Total Loss 1.862, Time Elapsed 36.446 s
+Step 8780, Total Loss 0.747, Time Elapsed 34.172 s
+Step 8790, Total Loss 1.146, Time Elapsed 41.725 s
+Step 8800, Total Loss 2.320, Time Elapsed 30.851 s
+Step 8810, Total Loss 2.720, Time Elapsed 39.813 s
+Step 8820, Total Loss 1.399, Time Elapsed 32.728 s
+Step 8830, Total Loss 1.273, Time Elapsed 33.712 s
+Step 8840, Total Loss 9.455, Time Elapsed 41.687 s
+Step 8850, Total Loss 2.305, Time Elapsed 35.545 s
+Step 8860, Total Loss 0.400, Time Elapsed 41.768 s
+Step 8870, Total Loss 2.279, Time Elapsed 38.402 s
+Step 8880, Total Loss 2.158, Time Elapsed 33.778 s
+Step 8890, Total Loss 2.203, Time Elapsed 33.116 s
+Step 8900, Total Loss 0.279, Time Elapsed 34.935 s
+Step 8910, Total Loss 1.633, Time Elapsed 34.002 s
+Step 8920, Total Loss 2.860, Time Elapsed 36.452 s
+Step 8930, Total Loss 1.993, Time Elapsed 34.292 s
+Step 8940, Total Loss 4.395, Time Elapsed 29.136 s
+Step 8950, Total Loss 1.721, Time Elapsed 39.537 s
+Step 8960, Total Loss 0.303, Time Elapsed 33.373 s
+Step 8970, Total Loss 2.839, Time Elapsed 39.228 s
+Step 8980, Total Loss 1.629, Time Elapsed 40.701 s
+Step 8990, Total Loss 1.095, Time Elapsed 34.269 s
+Step 9000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00009000
+Step 9000, Total Loss 1.610, Time Elapsed 55.142 s
+Step 9010, Total Loss 1.795, Time Elapsed 43.540 s
+Step 9020, Total Loss 2.116, Time Elapsed 30.159 s
+Step 9030, Total Loss 1.260, Time Elapsed 33.360 s
+Step 9040, Total Loss 1.023, Time Elapsed 34.505 s
+Step 9050, Total Loss 4.187, Time Elapsed 34.388 s
+Step 9060, Total Loss 3.278, Time Elapsed 31.720 s
+Step 9070, Total Loss 2.986, Time Elapsed 44.494 s
+Step 9080, Total Loss 1.771, Time Elapsed 35.830 s
+Step 9090, Total Loss 1.445, Time Elapsed 32.016 s
+Step 9100, Total Loss 10.471, Time Elapsed 34.198 s
+Step 9110, Total Loss 1.691, Time Elapsed 31.107 s
+Step 9120, Total Loss 2.869, Time Elapsed 33.517 s
+Step 9130, Total Loss 1.562, Time Elapsed 36.703 s
+Step 9140, Total Loss 1.439, Time Elapsed 37.378 s
+Step 9150, Total Loss 2.530, Time Elapsed 42.212 s
+Step 9160, Total Loss 1.583, Time Elapsed 44.411 s
+Step 9170, Total Loss 2.062, Time Elapsed 41.014 s
+Step 9180, Total Loss 2.165, Time Elapsed 39.326 s
+Step 9190, Total Loss 6.857, Time Elapsed 39.321 s
+Step 9200, Total Loss 2.844, Time Elapsed 35.953 s
+Step 9210, Total Loss 1.212, Time Elapsed 34.104 s
+Step 9220, Total Loss 2.056, Time Elapsed 35.500 s
+Step 9230, Total Loss 1.393, Time Elapsed 37.593 s
+Step 9240, Total Loss 3.089, Time Elapsed 37.323 s
+Step 9250, Total Loss 2.620, Time Elapsed 39.154 s
+Step 9260, Total Loss 3.276, Time Elapsed 32.584 s
+Step 9270, Total Loss 2.119, Time Elapsed 33.197 s
+Step 9280, Total Loss 3.154, Time Elapsed 34.182 s
+Step 9290, Total Loss 0.971, Time Elapsed 41.495 s
+Step 9300, Total Loss 3.631, Time Elapsed 35.078 s
+Step 9310, Total Loss 9.314, Time Elapsed 34.971 s
+Step 9320, Total Loss 3.834, Time Elapsed 37.413 s
+Step 9330, Total Loss 5.589, Time Elapsed 34.451 s
+Step 9340, Total Loss 1.184, Time Elapsed 35.338 s
+Step 9350, Total Loss 1.763, Time Elapsed 30.706 s
+Step 9360, Total Loss 1.255, Time Elapsed 42.667 s
+Step 9370, Total Loss 1.550, Time Elapsed 38.734 s
+Step 9380, Total Loss 2.203, Time Elapsed 36.865 s
+Step 9390, Total Loss 1.596, Time Elapsed 35.996 s
+Step 9400, Total Loss 2.441, Time Elapsed 32.682 s
+Step 9410, Total Loss 2.391, Time Elapsed 35.535 s
+Step 9420, Total Loss 1.442, Time Elapsed 18.678 s
+Step 9430, Total Loss 1.613, Time Elapsed 35.701 s
+Step 9440, Total Loss 1.246, Time Elapsed 40.971 s
+Step 9450, Total Loss 1.139, Time Elapsed 28.221 s
+Step 9460, Total Loss 24.017, Time Elapsed 20.437 s
+Step 9470, Total Loss 2.385, Time Elapsed 35.065 s
+Step 9480, Total Loss 2.205, Time Elapsed 42.756 s
+Step 9490, Total Loss 5.073, Time Elapsed 20.399 s
+Step 9500, Total Loss 0.591, Time Elapsed 29.804 s
+Step 9510, Total Loss 1.958, Time Elapsed 41.252 s
+Step 9520, Total Loss 3.739, Time Elapsed 31.651 s
+Step 9530, Total Loss 3.046, Time Elapsed 33.608 s
+Step 9540, Total Loss 2.014, Time Elapsed 42.224 s
+Step 9550, Total Loss 3.104, Time Elapsed 32.853 s
+Step 9560, Total Loss 1.321, Time Elapsed 33.572 s
+Step 9570, Total Loss 0.917, Time Elapsed 36.471 s
+Step 9580, Total Loss 2.699, Time Elapsed 24.177 s
+Step 9590, Total Loss 1.188, Time Elapsed 32.070 s
+Step 9600, Total Loss 4.868, Time Elapsed 42.140 s
+Step 9610, Total Loss 0.407, Time Elapsed 35.055 s
+Step 9620, Total Loss 1.419, Time Elapsed 40.568 s
+Step 9630, Total Loss 6.394, Time Elapsed 38.660 s
+Step 9640, Total Loss 1.935, Time Elapsed 42.269 s
+Step 9650, Total Loss 3.307, Time Elapsed 42.615 s
+Step 9660, Total Loss 1.785, Time Elapsed 35.778 s
+Step 9670, Total Loss 2.051, Time Elapsed 28.586 s
+Step 9680, Total Loss 4.309, Time Elapsed 20.963 s
+Step 9690, Total Loss 1.236, Time Elapsed 28.337 s
+Step 9700, Total Loss 1.857, Time Elapsed 43.834 s
+Step 9710, Total Loss 5.797, Time Elapsed 39.774 s
+Step 9720, Total Loss 2.936, Time Elapsed 25.778 s
+Step 9730, Total Loss 4.209, Time Elapsed 22.741 s
+Step 9740, Total Loss 7.701, Time Elapsed 33.266 s
+Step 9750, Total Loss 2.107, Time Elapsed 36.192 s
+Step 9760, Total Loss 5.176, Time Elapsed 28.010 s
+Step 9770, Total Loss 1.276, Time Elapsed 28.344 s
+Step 9780, Total Loss 2.542, Time Elapsed 35.153 s
+Step 9790, Total Loss 0.755, Time Elapsed 33.185 s
+Step 9800, Total Loss 1.362, Time Elapsed 34.757 s
+Step 9810, Total Loss 0.364, Time Elapsed 41.343 s
+Step 9820, Total Loss 3.554, Time Elapsed 34.618 s
+Step 9830, Total Loss 3.812, Time Elapsed 26.739 s
+Step 9840, Total Loss 1.599, Time Elapsed 27.689 s
+Step 9850, Total Loss 1.177, Time Elapsed 35.853 s
+Step 9860, Total Loss 1.448, Time Elapsed 31.866 s
+Step 9870, Total Loss 1.096, Time Elapsed 38.618 s
+Step 9880, Total Loss 1.527, Time Elapsed 37.007 s
+Step 9890, Total Loss 5.035, Time Elapsed 34.691 s
+Step 9900, Total Loss 1.992, Time Elapsed 37.350 s
+Step 9910, Total Loss 1.517, Time Elapsed 29.998 s
+Step 9920, Total Loss 1.692, Time Elapsed 23.024 s
+Step 9930, Total Loss 3.851, Time Elapsed 26.452 s
+Step 9940, Total Loss 2.405, Time Elapsed 35.880 s
+Step 9950, Total Loss 2.299, Time Elapsed 36.793 s
+Step 9960, Total Loss 2.436, Time Elapsed 35.799 s
+Step 9970, Total Loss 1.294, Time Elapsed 28.707 s
+Step 9980, Total Loss 4.227, Time Elapsed 31.759 s
+Step 9990, Total Loss 0.694, Time Elapsed 35.556 s
+Step 10000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00010000
+Step 10000, Total Loss 4.527, Time Elapsed 47.991 s
+Step 10010, Total Loss 2.811, Time Elapsed 34.645 s
+Step 10020, Total Loss 2.187, Time Elapsed 27.783 s
+Step 10030, Total Loss 1.412, Time Elapsed 26.872 s
+Step 10040, Total Loss 0.995, Time Elapsed 33.155 s
+Step 10050, Total Loss 2.882, Time Elapsed 34.926 s
+Step 10060, Total Loss 0.857, Time Elapsed 30.690 s
+Step 10070, Total Loss 1.867, Time Elapsed 31.775 s
+Step 10080, Total Loss 0.492, Time Elapsed 24.645 s
+Step 10090, Total Loss 1.560, Time Elapsed 36.412 s
+Step 10100, Total Loss 1.995, Time Elapsed 34.659 s
+Step 10110, Total Loss 2.498, Time Elapsed 25.953 s
+Step 10120, Total Loss 1.326, Time Elapsed 36.294 s
+Step 10130, Total Loss 1.010, Time Elapsed 36.687 s
+Step 10140, Total Loss 1.192, Time Elapsed 34.686 s
+Step 10150, Total Loss 4.944, Time Elapsed 38.897 s
+Step 10160, Total Loss 4.377, Time Elapsed 34.440 s
+Step 10170, Total Loss 2.139, Time Elapsed 39.954 s
+Step 10180, Total Loss 1.195, Time Elapsed 37.952 s
+Step 10190, Total Loss 5.046, Time Elapsed 31.123 s
+Step 10200, Total Loss 1.181, Time Elapsed 37.773 s
+Step 10210, Total Loss 0.877, Time Elapsed 38.032 s
+Step 10220, Total Loss 0.793, Time Elapsed 37.857 s
+Step 10230, Total Loss 2.690, Time Elapsed 40.093 s
+Step 10240, Total Loss 2.021, Time Elapsed 39.259 s
+Step 10250, Total Loss 3.563, Time Elapsed 37.065 s
+Step 10260, Total Loss 1.052, Time Elapsed 27.346 s
+Step 10270, Total Loss 2.623, Time Elapsed 34.831 s
+Step 10280, Total Loss 0.888, Time Elapsed 39.061 s
+Step 10290, Total Loss 2.705, Time Elapsed 33.132 s
+Step 10300, Total Loss 2.031, Time Elapsed 36.577 s
+Step 10310, Total Loss 1.128, Time Elapsed 33.539 s
+Step 10320, Total Loss 3.168, Time Elapsed 34.880 s
+Step 10330, Total Loss 1.511, Time Elapsed 35.163 s
+Step 10340, Total Loss 1.496, Time Elapsed 28.119 s
+Step 10350, Total Loss 2.266, Time Elapsed 39.644 s
+Step 10360, Total Loss 1.483, Time Elapsed 40.385 s
+Step 10370, Total Loss 0.957, Time Elapsed 25.281 s
+Step 10380, Total Loss 1.545, Time Elapsed 37.064 s
+Step 10390, Total Loss 1.182, Time Elapsed 39.239 s
+Step 10400, Total Loss 2.926, Time Elapsed 36.457 s
+Step 10410, Total Loss 1.633, Time Elapsed 38.850 s
+Step 10420, Total Loss 2.853, Time Elapsed 25.306 s
+Step 10430, Total Loss 3.100, Time Elapsed 23.890 s
+Step 10440, Total Loss 1.905, Time Elapsed 24.293 s
+Step 10450, Total Loss 1.340, Time Elapsed 23.580 s
+Step 10460, Total Loss 1.227, Time Elapsed 20.888 s
+Step 10470, Total Loss 2.719, Time Elapsed 32.775 s
+Step 10480, Total Loss 2.782, Time Elapsed 34.775 s
+Step 10490, Total Loss 1.334, Time Elapsed 37.183 s
+Step 10500, Total Loss 1.131, Time Elapsed 39.312 s
+Step 10510, Total Loss 1.455, Time Elapsed 32.688 s
+Step 10520, Total Loss 1.561, Time Elapsed 24.584 s
+Step 10530, Total Loss 0.879, Time Elapsed 24.583 s
+Step 10540, Total Loss 0.657, Time Elapsed 26.093 s
+Step 10550, Total Loss 3.061, Time Elapsed 24.077 s
+Step 10560, Total Loss 1.855, Time Elapsed 32.830 s
+Step 10570, Total Loss 23.528, Time Elapsed 29.577 s
+Step 10580, Total Loss 3.286, Time Elapsed 33.457 s
+Step 10590, Total Loss 1.241, Time Elapsed 25.857 s
+Step 10600, Total Loss 0.784, Time Elapsed 24.115 s
+Step 10610, Total Loss 8.981, Time Elapsed 24.049 s
+Step 10620, Total Loss 1.768, Time Elapsed 32.860 s
+Step 10630, Total Loss 2.104, Time Elapsed 29.329 s
+Step 10640, Total Loss 1.188, Time Elapsed 39.959 s
+Step 10650, Total Loss 2.293, Time Elapsed 38.928 s
+Step 10660, Total Loss 1.974, Time Elapsed 32.575 s
+Step 10670, Total Loss 2.381, Time Elapsed 34.489 s
+Step 10680, Total Loss 1.599, Time Elapsed 33.953 s
+Step 10690, Total Loss 2.458, Time Elapsed 32.976 s
+Step 10700, Total Loss 2.692, Time Elapsed 22.644 s
+Step 10710, Total Loss 1.542, Time Elapsed 16.962 s
+Step 10720, Total Loss 0.452, Time Elapsed 22.119 s
+Step 10730, Total Loss 2.219, Time Elapsed 33.599 s
+Step 10740, Total Loss 2.177, Time Elapsed 34.843 s
+Step 10750, Total Loss 0.848, Time Elapsed 33.208 s
+Step 10760, Total Loss 3.495, Time Elapsed 34.921 s
+Step 10770, Total Loss 0.914, Time Elapsed 34.146 s
+Step 10780, Total Loss 2.484, Time Elapsed 35.591 s
+Step 10790, Total Loss 2.426, Time Elapsed 34.789 s
+Step 10800, Total Loss 2.026, Time Elapsed 36.539 s
+Step 10810, Total Loss 1.891, Time Elapsed 30.087 s
+Step 10820, Total Loss 2.704, Time Elapsed 31.941 s
+Step 10830, Total Loss 3.244, Time Elapsed 37.938 s
+Step 10840, Total Loss 15.692, Time Elapsed 39.117 s
+Step 10850, Total Loss 1.668, Time Elapsed 31.584 s
+Step 10860, Total Loss 1.699, Time Elapsed 31.666 s
+Step 10870, Total Loss 1.952, Time Elapsed 28.642 s
+Step 10880, Total Loss 2.130, Time Elapsed 33.879 s
+Step 10890, Total Loss 1.522, Time Elapsed 32.624 s
+Step 10900, Total Loss 1.456, Time Elapsed 31.944 s
+Step 10910, Total Loss 1.188, Time Elapsed 39.626 s
+Step 10920, Total Loss 0.982, Time Elapsed 38.924 s
+Step 10930, Total Loss 1.082, Time Elapsed 35.106 s
+Step 10940, Total Loss 1.142, Time Elapsed 35.066 s
+Step 10950, Total Loss 2.561, Time Elapsed 34.257 s
+Step 10960, Total Loss 1.914, Time Elapsed 31.316 s
+Step 10970, Total Loss 1.399, Time Elapsed 32.826 s
+Step 10980, Total Loss 2.526, Time Elapsed 27.525 s
+Step 10990, Total Loss 1.334, Time Elapsed 27.676 s
+Step 11000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00011000
+Step 11000, Total Loss 2.821, Time Elapsed 54.387 s
+Step 11010, Total Loss 1.566, Time Elapsed 29.493 s
+Step 11020, Total Loss 1.262, Time Elapsed 30.856 s
+Step 11030, Total Loss 0.954, Time Elapsed 34.130 s
+Step 11040, Total Loss 2.700, Time Elapsed 35.239 s
+Step 11050, Total Loss 0.664, Time Elapsed 21.711 s
+Step 11060, Total Loss 1.396, Time Elapsed 17.516 s
+Step 11070, Total Loss 1.421, Time Elapsed 32.179 s
+Step 11080, Total Loss 1.448, Time Elapsed 30.672 s
+Step 11090, Total Loss 1.691, Time Elapsed 38.101 s
+Step 11100, Total Loss 1.208, Time Elapsed 38.687 s
+Step 11110, Total Loss 2.989, Time Elapsed 35.307 s
+Step 11120, Total Loss 5.043, Time Elapsed 33.581 s
+Step 11130, Total Loss 7.918, Time Elapsed 33.231 s
+Step 11140, Total Loss 2.195, Time Elapsed 37.169 s
+Step 11150, Total Loss 1.652, Time Elapsed 30.113 s
+Step 11160, Total Loss 7.214, Time Elapsed 29.578 s
+Step 11170, Total Loss 1.020, Time Elapsed 33.431 s
+Step 11180, Total Loss 1.353, Time Elapsed 29.151 s
+Step 11190, Total Loss 1.783, Time Elapsed 30.212 s
+Step 11200, Total Loss 2.860, Time Elapsed 33.108 s
+Step 11210, Total Loss 2.015, Time Elapsed 34.434 s
+Step 11220, Total Loss 1.550, Time Elapsed 31.690 s
+Step 11230, Total Loss 0.721, Time Elapsed 39.416 s
+Step 11240, Total Loss 2.617, Time Elapsed 36.516 s
+Step 11250, Total Loss 1.065, Time Elapsed 34.156 s
+Step 11260, Total Loss 1.308, Time Elapsed 33.211 s
+Step 11270, Total Loss 1.441, Time Elapsed 32.784 s
+Step 11280, Total Loss 1.024, Time Elapsed 24.660 s
+Step 11290, Total Loss 0.956, Time Elapsed 30.669 s
+Step 11300, Total Loss 0.887, Time Elapsed 30.732 s
+Step 11310, Total Loss 1.764, Time Elapsed 25.332 s
+Step 11320, Total Loss 2.329, Time Elapsed 17.507 s
+Step 11330, Total Loss 1.760, Time Elapsed 24.612 s
+Step 11340, Total Loss 3.325, Time Elapsed 28.491 s
+Step 11350, Total Loss 0.847, Time Elapsed 30.285 s
+Step 11360, Total Loss 3.926, Time Elapsed 32.936 s
+Step 11370, Total Loss 0.964, Time Elapsed 39.431 s
+Step 11380, Total Loss 5.413, Time Elapsed 33.244 s
+Step 11390, Total Loss 2.252, Time Elapsed 36.932 s
+Step 11400, Total Loss 4.884, Time Elapsed 31.813 s
+Step 11410, Total Loss 2.393, Time Elapsed 28.605 s
+Step 11420, Total Loss 1.474, Time Elapsed 32.738 s
+Step 11430, Total Loss 1.215, Time Elapsed 31.876 s
+Step 11440, Total Loss 3.334, Time Elapsed 33.131 s
+Step 11450, Total Loss 3.002, Time Elapsed 34.024 s
+Step 11460, Total Loss 2.593, Time Elapsed 34.023 s
+Step 11470, Total Loss 2.105, Time Elapsed 35.582 s
+Step 11480, Total Loss 1.269, Time Elapsed 32.735 s
+Step 11490, Total Loss 3.496, Time Elapsed 32.717 s
+Step 11500, Total Loss 0.921, Time Elapsed 33.736 s
+Step 11510, Total Loss 0.955, Time Elapsed 37.776 s
+Step 11520, Total Loss 2.468, Time Elapsed 26.913 s
+Step 11530, Total Loss 1.262, Time Elapsed 30.787 s
+Step 11540, Total Loss 3.413, Time Elapsed 35.577 s
+Step 11550, Total Loss 1.846, Time Elapsed 29.688 s
+Step 11560, Total Loss 1.975, Time Elapsed 35.276 s
+Step 11570, Total Loss 10.869, Time Elapsed 34.030 s
+Step 11580, Total Loss 1.835, Time Elapsed 33.413 s
+Step 11590, Total Loss 0.600, Time Elapsed 32.441 s
+Step 11600, Total Loss 1.435, Time Elapsed 34.177 s
+Step 11610, Total Loss 2.725, Time Elapsed 33.428 s
+Step 11620, Total Loss 0.833, Time Elapsed 33.494 s
+Step 11630, Total Loss 5.060, Time Elapsed 30.057 s
+Step 11640, Total Loss 3.537, Time Elapsed 30.397 s
+Step 11650, Total Loss 2.599, Time Elapsed 35.646 s
+Step 11660, Total Loss 2.430, Time Elapsed 40.087 s
+Step 11670, Total Loss 9.642, Time Elapsed 33.417 s
+Step 11680, Total Loss 2.059, Time Elapsed 34.671 s
+Step 11690, Total Loss 5.159, Time Elapsed 33.589 s
+Step 11700, Total Loss 1.831, Time Elapsed 37.847 s
+Step 11710, Total Loss 1.579, Time Elapsed 34.527 s
+Step 11720, Total Loss 1.266, Time Elapsed 29.560 s
+Step 11730, Total Loss 1.226, Time Elapsed 31.017 s
+Step 11740, Total Loss 3.924, Time Elapsed 24.667 s
+Step 11750, Total Loss 2.944, Time Elapsed 28.860 s
+Step 11760, Total Loss 1.593, Time Elapsed 38.359 s
+Step 11770, Total Loss 3.714, Time Elapsed 35.039 s
+Step 11780, Total Loss 1.160, Time Elapsed 30.405 s
+Step 11790, Total Loss 2.997, Time Elapsed 31.340 s
+Step 11800, Total Loss 2.081, Time Elapsed 34.631 s
+Step 11810, Total Loss 2.199, Time Elapsed 22.688 s
+Step 11820, Total Loss 1.082, Time Elapsed 25.352 s
+Step 11830, Total Loss 2.038, Time Elapsed 34.550 s
+Step 11840, Total Loss 2.316, Time Elapsed 37.687 s
+Step 11850, Total Loss 4.213, Time Elapsed 35.399 s
+Step 11860, Total Loss 1.413, Time Elapsed 36.331 s
+Step 11870, Total Loss 0.991, Time Elapsed 21.960 s
+Step 11880, Total Loss 1.683, Time Elapsed 30.481 s
+Step 11890, Total Loss 2.559, Time Elapsed 37.679 s
+Step 11900, Total Loss 0.790, Time Elapsed 36.753 s
+Step 11910, Total Loss 0.148, Time Elapsed 34.732 s
+Step 11920, Total Loss 2.561, Time Elapsed 30.067 s
+Step 11930, Total Loss 1.262, Time Elapsed 30.425 s
+Step 11940, Total Loss 4.535, Time Elapsed 22.793 s
+Step 11950, Total Loss 2.964, Time Elapsed 37.725 s
+Step 11960, Total Loss 0.860, Time Elapsed 37.389 s
+Step 11970, Total Loss 2.921, Time Elapsed 37.626 s
+Step 11980, Total Loss 0.933, Time Elapsed 38.007 s
+Step 11990, Total Loss 1.459, Time Elapsed 36.928 s
+Step 12000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00012000
+Step 12000, Total Loss 2.194, Time Elapsed 55.116 s
+Step 12010, Total Loss 1.509, Time Elapsed 28.182 s
+Step 12020, Total Loss 5.966, Time Elapsed 33.994 s
+Step 12030, Total Loss 1.924, Time Elapsed 32.085 s
+Step 12040, Total Loss 0.146, Time Elapsed 33.679 s
+Step 12050, Total Loss 0.857, Time Elapsed 34.211 s
+Step 12060, Total Loss 3.697, Time Elapsed 33.369 s
+Step 12070, Total Loss 4.917, Time Elapsed 28.270 s
+Step 12080, Total Loss 5.609, Time Elapsed 33.991 s
+Step 12090, Total Loss 2.984, Time Elapsed 31.684 s
+Step 12100, Total Loss 5.113, Time Elapsed 37.473 s
+Step 12110, Total Loss 0.925, Time Elapsed 27.004 s
+Step 12120, Total Loss 1.878, Time Elapsed 40.655 s
+Step 12130, Total Loss 0.942, Time Elapsed 35.518 s
+Step 12140, Total Loss 1.314, Time Elapsed 33.689 s
+Step 12150, Total Loss 2.599, Time Elapsed 34.411 s
+Step 12160, Total Loss 1.745, Time Elapsed 20.534 s
+Step 12170, Total Loss 1.631, Time Elapsed 24.003 s
+Step 12180, Total Loss 1.506, Time Elapsed 28.447 s
+Step 12190, Total Loss 3.752, Time Elapsed 19.053 s
+Step 12200, Total Loss 0.089, Time Elapsed 28.300 s
+Step 12210, Total Loss 1.505, Time Elapsed 27.362 s
+Step 12220, Total Loss 1.464, Time Elapsed 27.751 s
+Step 12230, Total Loss 2.183, Time Elapsed 28.146 s
+Step 12240, Total Loss 3.568, Time Elapsed 28.459 s
+Step 12250, Total Loss 2.252, Time Elapsed 27.506 s
+Step 12260, Total Loss 0.473, Time Elapsed 21.194 s
+Step 12270, Total Loss 1.348, Time Elapsed 23.101 s
+Step 12280, Total Loss 1.667, Time Elapsed 20.929 s
+Step 12290, Total Loss 2.147, Time Elapsed 25.397 s
+Step 12300, Total Loss 1.762, Time Elapsed 36.777 s
+Step 12310, Total Loss 0.850, Time Elapsed 35.464 s
+Step 12320, Total Loss 1.065, Time Elapsed 37.132 s
+Step 12330, Total Loss 2.106, Time Elapsed 33.322 s
+Step 12340, Total Loss 4.221, Time Elapsed 31.117 s
+Step 12350, Total Loss 1.456, Time Elapsed 34.278 s
+Step 12360, Total Loss 2.623, Time Elapsed 31.542 s
+Step 12370, Total Loss 1.437, Time Elapsed 39.386 s
+Step 12380, Total Loss 1.752, Time Elapsed 35.480 s
+Step 12390, Total Loss 1.862, Time Elapsed 31.926 s
+Step 12400, Total Loss 1.711, Time Elapsed 26.583 s
+Step 12410, Total Loss 2.377, Time Elapsed 33.911 s
+Step 12420, Total Loss 0.115, Time Elapsed 36.106 s
+Step 12430, Total Loss 3.112, Time Elapsed 33.921 s
+Step 12440, Total Loss 1.692, Time Elapsed 35.720 s
+Step 12450, Total Loss 2.641, Time Elapsed 34.248 s
+Step 12460, Total Loss 0.917, Time Elapsed 36.069 s
+Step 12470, Total Loss 0.787, Time Elapsed 34.421 s
+Step 12480, Total Loss 2.247, Time Elapsed 35.696 s
+Step 12490, Total Loss 1.205, Time Elapsed 36.008 s
+Step 12500, Total Loss 2.832, Time Elapsed 33.083 s
+Step 12510, Total Loss 0.983, Time Elapsed 30.175 s
+Step 12520, Total Loss 1.094, Time Elapsed 35.706 s
+Step 12530, Total Loss 1.613, Time Elapsed 30.262 s
+Step 12540, Total Loss 2.933, Time Elapsed 38.260 s
+Step 12550, Total Loss 1.619, Time Elapsed 33.324 s
+Step 12560, Total Loss 3.110, Time Elapsed 37.693 s
+Step 12570, Total Loss 1.506, Time Elapsed 34.757 s
+Step 12580, Total Loss 0.438, Time Elapsed 38.288 s
+Step 12590, Total Loss 3.051, Time Elapsed 33.113 s
+Step 12600, Total Loss 2.689, Time Elapsed 31.036 s
+Step 12610, Total Loss 6.031, Time Elapsed 32.047 s
+Step 12620, Total Loss 1.382, Time Elapsed 39.403 s
+Step 12630, Total Loss 1.328, Time Elapsed 37.078 s
+Step 12640, Total Loss 3.504, Time Elapsed 32.623 s
+Step 12650, Total Loss 5.752, Time Elapsed 34.088 s
+Step 12660, Total Loss 2.507, Time Elapsed 29.787 s
+Step 12670, Total Loss 4.446, Time Elapsed 37.232 s
+Step 12680, Total Loss 2.135, Time Elapsed 34.882 s
+Step 12690, Total Loss 1.988, Time Elapsed 21.926 s
+Step 12700, Total Loss 1.653, Time Elapsed 31.657 s
+Step 12710, Total Loss 1.927, Time Elapsed 38.850 s
+Step 12720, Total Loss 1.625, Time Elapsed 33.390 s
+Step 12730, Total Loss 2.249, Time Elapsed 35.965 s
+Step 12740, Total Loss 1.741, Time Elapsed 29.299 s
+Step 12750, Total Loss 0.751, Time Elapsed 33.186 s
+Step 12760, Total Loss 1.456, Time Elapsed 33.765 s
+Step 12770, Total Loss 1.725, Time Elapsed 39.727 s
+Step 12780, Total Loss 0.939, Time Elapsed 26.260 s
+Step 12790, Total Loss 3.474, Time Elapsed 36.731 s
+Step 12800, Total Loss 0.539, Time Elapsed 36.074 s
+Step 12810, Total Loss 0.779, Time Elapsed 37.637 s
+Step 12820, Total Loss 1.088, Time Elapsed 33.870 s
+Step 12830, Total Loss 0.967, Time Elapsed 20.779 s
+Step 12840, Total Loss 7.915, Time Elapsed 31.860 s
+Step 12850, Total Loss 1.250, Time Elapsed 20.689 s
+Step 12860, Total Loss 2.082, Time Elapsed 39.572 s
+Step 12870, Total Loss 1.879, Time Elapsed 34.028 s
+Step 12880, Total Loss 3.996, Time Elapsed 37.097 s
+Step 12890, Total Loss 3.771, Time Elapsed 38.913 s
+Step 12900, Total Loss 1.471, Time Elapsed 36.058 s
+Step 12910, Total Loss 1.306, Time Elapsed 35.548 s
+Step 12920, Total Loss 6.277, Time Elapsed 31.983 s
+Step 12930, Total Loss 1.811, Time Elapsed 38.268 s
+Step 12940, Total Loss 1.934, Time Elapsed 32.646 s
+Step 12950, Total Loss 1.818, Time Elapsed 40.201 s
+Step 12960, Total Loss 1.020, Time Elapsed 38.602 s
+Step 12970, Total Loss 1.400, Time Elapsed 37.387 s
+Step 12980, Total Loss 2.630, Time Elapsed 37.460 s
+Step 12990, Total Loss 1.733, Time Elapsed 30.779 s
+Step 13000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00013000
+Step 13000, Total Loss 2.113, Time Elapsed 47.893 s
+Step 13010, Total Loss 0.788, Time Elapsed 36.554 s
+Step 13020, Total Loss 1.509, Time Elapsed 40.532 s
+Step 13030, Total Loss 1.386, Time Elapsed 33.137 s
+Step 13040, Total Loss 2.564, Time Elapsed 32.800 s
+Step 13050, Total Loss 2.008, Time Elapsed 36.536 s
+Step 13060, Total Loss 3.042, Time Elapsed 35.015 s
+Step 13070, Total Loss 2.000, Time Elapsed 35.160 s
+Step 13080, Total Loss 0.696, Time Elapsed 35.596 s
+Step 13090, Total Loss 3.003, Time Elapsed 35.649 s
+Step 13100, Total Loss 2.441, Time Elapsed 37.550 s
+Step 13110, Total Loss 3.841, Time Elapsed 34.444 s
+Step 13120, Total Loss 2.147, Time Elapsed 42.761 s
+Step 13130, Total Loss 2.258, Time Elapsed 36.285 s
+Step 13140, Total Loss 1.277, Time Elapsed 29.053 s
+Step 13150, Total Loss 1.466, Time Elapsed 35.166 s
+Step 13160, Total Loss 3.830, Time Elapsed 37.803 s
+Step 13170, Total Loss 21.108, Time Elapsed 34.364 s
+Step 13180, Total Loss 0.603, Time Elapsed 35.617 s
+Step 13190, Total Loss 17.527, Time Elapsed 36.873 s
+Step 13200, Total Loss 1.788, Time Elapsed 36.206 s
+Step 13210, Total Loss 3.739, Time Elapsed 36.720 s
+Step 13220, Total Loss 1.961, Time Elapsed 36.302 s
+Step 13230, Total Loss 2.376, Time Elapsed 36.529 s
+Step 13240, Total Loss 0.968, Time Elapsed 38.556 s
+Step 13250, Total Loss 4.429, Time Elapsed 39.520 s
+Step 13260, Total Loss 2.336, Time Elapsed 39.073 s
+Step 13270, Total Loss 3.154, Time Elapsed 37.475 s
+Step 13280, Total Loss 3.019, Time Elapsed 38.099 s
+Step 13290, Total Loss 5.342, Time Elapsed 39.462 s
+Step 13300, Total Loss 0.506, Time Elapsed 37.251 s
+Step 13310, Total Loss 1.753, Time Elapsed 38.390 s
+Step 13320, Total Loss 2.337, Time Elapsed 41.261 s
+Step 13330, Total Loss 1.167, Time Elapsed 39.921 s
+Step 13340, Total Loss 2.473, Time Elapsed 44.306 s
+Step 13350, Total Loss 1.301, Time Elapsed 43.216 s
+Step 13360, Total Loss 1.465, Time Elapsed 32.700 s
+Step 13370, Total Loss 1.128, Time Elapsed 31.574 s
+Step 13380, Total Loss 1.220, Time Elapsed 40.274 s
+Step 13390, Total Loss 1.084, Time Elapsed 40.866 s
+Step 13400, Total Loss 2.918, Time Elapsed 35.710 s
+Step 13410, Total Loss 3.685, Time Elapsed 34.775 s
+Step 13420, Total Loss 3.301, Time Elapsed 33.492 s
+Step 13430, Total Loss 1.740, Time Elapsed 33.417 s
+Step 13440, Total Loss 1.151, Time Elapsed 40.575 s
+Step 13450, Total Loss 0.991, Time Elapsed 41.891 s
+Step 13460, Total Loss 2.888, Time Elapsed 38.840 s
+Step 13470, Total Loss 1.186, Time Elapsed 38.009 s
+Step 13480, Total Loss 1.890, Time Elapsed 35.600 s
+Step 13490, Total Loss 0.798, Time Elapsed 43.106 s
+Step 13500, Total Loss 0.078, Time Elapsed 40.872 s
+Step 13510, Total Loss 0.779, Time Elapsed 34.587 s
+Step 13520, Total Loss 2.574, Time Elapsed 35.333 s
+Step 13530, Total Loss 1.854, Time Elapsed 32.531 s
+Step 13540, Total Loss 1.102, Time Elapsed 38.142 s
+Step 13550, Total Loss 2.035, Time Elapsed 38.334 s
+Step 13560, Total Loss 1.615, Time Elapsed 23.554 s
+Step 13570, Total Loss 0.367, Time Elapsed 28.936 s
+Step 13580, Total Loss 3.009, Time Elapsed 36.692 s
+Step 13590, Total Loss 2.910, Time Elapsed 35.563 s
+Step 13600, Total Loss 2.008, Time Elapsed 37.917 s
+Step 13610, Total Loss 15.948, Time Elapsed 34.365 s
+Step 13620, Total Loss 3.142, Time Elapsed 33.480 s
+Step 13630, Total Loss 1.477, Time Elapsed 20.982 s
+Step 13640, Total Loss 1.558, Time Elapsed 39.154 s
+Step 13650, Total Loss 1.527, Time Elapsed 37.718 s
+Step 13660, Total Loss 2.335, Time Elapsed 19.130 s
+Step 13670, Total Loss 3.184, Time Elapsed 25.955 s
+Step 13680, Total Loss 2.332, Time Elapsed 27.067 s
+Step 13690, Total Loss 2.912, Time Elapsed 33.651 s
+Step 13700, Total Loss 0.858, Time Elapsed 38.495 s
+Step 13710, Total Loss 2.857, Time Elapsed 34.376 s
+Step 13720, Total Loss 6.270, Time Elapsed 38.964 s
+Step 13730, Total Loss 1.097, Time Elapsed 36.089 s
+Step 13740, Total Loss 3.881, Time Elapsed 40.538 s
+Step 13750, Total Loss 1.401, Time Elapsed 40.798 s
+Step 13760, Total Loss 2.729, Time Elapsed 38.213 s
+Step 13770, Total Loss 3.050, Time Elapsed 39.889 s
+Step 13780, Total Loss 2.266, Time Elapsed 26.998 s
+Step 13790, Total Loss 1.681, Time Elapsed 39.816 s
+Step 13800, Total Loss 2.375, Time Elapsed 30.782 s
+Step 13810, Total Loss 1.140, Time Elapsed 30.728 s
+Step 13820, Total Loss 2.059, Time Elapsed 39.992 s
+Step 13830, Total Loss 0.927, Time Elapsed 33.249 s
+Step 13840, Total Loss 1.697, Time Elapsed 35.939 s
+Step 13850, Total Loss 4.043, Time Elapsed 41.702 s
+Step 13860, Total Loss 1.928, Time Elapsed 38.855 s
+Step 13870, Total Loss 1.159, Time Elapsed 40.968 s
+Step 13880, Total Loss 1.683, Time Elapsed 23.298 s
+Step 13890, Total Loss 1.785, Time Elapsed 36.979 s
+Step 13900, Total Loss 3.782, Time Elapsed 27.825 s
+Step 13910, Total Loss 2.759, Time Elapsed 34.135 s
+Step 13920, Total Loss 7.027, Time Elapsed 33.367 s
+Step 13930, Total Loss 0.949, Time Elapsed 38.035 s
+Step 13940, Total Loss 1.455, Time Elapsed 40.728 s
+Step 13950, Total Loss 1.620, Time Elapsed 45.280 s
+Step 13960, Total Loss 1.577, Time Elapsed 39.165 s
+Step 13970, Total Loss 0.437, Time Elapsed 41.867 s
+Step 13980, Total Loss 3.306, Time Elapsed 38.912 s
+Step 13990, Total Loss 1.382, Time Elapsed 37.281 s
+Step 14000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00014000
+Step 14000, Total Loss 1.363, Time Elapsed 64.646 s
+Step 14010, Total Loss 2.039, Time Elapsed 35.318 s
+Step 14020, Total Loss 2.903, Time Elapsed 33.903 s
+Step 14030, Total Loss 0.486, Time Elapsed 36.923 s
+Step 14040, Total Loss 2.874, Time Elapsed 39.464 s
+Step 14050, Total Loss 1.244, Time Elapsed 38.225 s
+Step 14060, Total Loss 2.245, Time Elapsed 42.061 s
+Step 14070, Total Loss 1.569, Time Elapsed 43.154 s
+Step 14080, Total Loss 2.833, Time Elapsed 44.562 s
+Step 14090, Total Loss 1.459, Time Elapsed 35.179 s
+^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A                                                            Step 14100, Total Loss 1.624, Time Elapsed 41.391 s
+Step 14110, Total Loss 6.034, Time Elapsed 27.489 s
+Step 14120, Total Loss 2.603, Time Elapsed 21.503 s
+Step 14130, Total Loss 2

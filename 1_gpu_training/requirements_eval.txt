@@ -1,0 +1,4 @@
+xlrd==1.2.0
+openpyxl
+tkintertable
+google_pasta

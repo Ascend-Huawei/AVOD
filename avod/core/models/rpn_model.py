@@ -848,7 +848,7 @@ class RpnModel(model.DetectionModel):
             if anchors_info:
                 anchor_indices, anchors_ious, anchor_offsets, \
                     anchor_classes = anchors_info
-
+                
                 anchor_boxes_3d_to_use = all_anchor_boxes_3d[anchor_indices]
             else:
                 train_cond = (self._train_val_test == "train" and
@@ -884,6 +884,10 @@ class RpnModel(model.DetectionModel):
         anchors_ious = np.asarray(anchors_ious)
         anchor_offsets = np.asarray(anchor_offsets)
         anchor_classes = np.asarray(anchor_classes)
+        # print(anchor_boxes_3d_to_use.shape) # (16215, 7)
+        # print(anchors_ious.shape) # (16215,)
+        # print(anchor_offsets.shape) # (16215, 6)
+        # print(anchor_classes.shape) # (16215,)
 
         # Flip anchors and centroid x offsets for augmented samples
         if kitti_aug.AUG_FLIPPING in sample_augs:
@@ -896,7 +900,9 @@ class RpnModel(model.DetectionModel):
         anchors_to_use = box_3d_encoder.box_3d_to_anchor(
             anchor_boxes_3d_to_use)
         num_anchors = len(anchors_to_use)
-
+        # print(num_anchors) # (5860,)
+        # print(anchors_to_use.shape)
+        # raise Exception
         # Project anchors into bev
         bev_anchors, bev_anchors_norm = anchor_projector.project_to_bev(
             anchors_to_use, self._bev_extents)
@@ -909,9 +915,20 @@ class RpnModel(model.DetectionModel):
         # Reorder into [y1, x1, y2, x2] for tf.crop_and_resize op
         self._bev_anchors_norm = bev_anchors_norm[:, [1, 0, 3, 2]]
         self._img_anchors_norm = img_anchors_norm[:, [1, 0, 3, 2]]
-
+        # print(bev_anchors.shape)
+        # print(self._bev_anchors_norm.shape)
+        # print(img_anchors.shape)
+        # print(self._img_anchors_norm.shape)
+        # raise Exception
         # Fill in placeholder inputs
-        self._placeholder_inputs[self.PL_ANCHORS] = anchors_to_use
+        # print(anchors_to_use.dtype)
+        # print(anchors_to_use.shape)
+        # anchors_to_use = anchors_to_use.astype('float16')
+        # print(anchors_to_use.dtype)
+
+        # print(type(anchors_to_use[0][0]))
+        # raise Exception
+        self._placeholder_inputs[self.PL_ANCHORS] = anchors_to_use # (16215, 6)
 
         # If we are in train/validation mode, and the anchor infos
         # are not empty, store them. Checking for just anchors_ious

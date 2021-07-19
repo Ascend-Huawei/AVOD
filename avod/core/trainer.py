@@ -16,7 +16,7 @@ from avod.core import summary_utils
 slim = tf.contrib.slim
 
 
-def train(model, train_config):
+def train(model, train_config, args):
     """Training function for detection models.
 
     Args:
@@ -116,11 +116,13 @@ def train(model, train_config):
         custom_op = config.graph_options.rewrite_options.custom_optimizers.add()
         custom_op.name = "NpuOptimizer"
         custom_op.parameter_map["use_off_line"].b = True
-        custom_op.parameter_map["precision_mode"].s = tf.compat.as_bytes("allow_mix_precision") # 混合精度
-
-        if False:
+        custom_op.parameter_map["precision_mode"].s = tf.compat.as_bytes(args.precision_mode) # 混合精度
+        
+        if args.profiling:
             custom_op.parameter_map["profiling_mode"].b = True  # 打开profiling
-            custom_op.parameter_map["profiling_options"].s = tf.compat.as_bytes('{"output":"/home/jiayan/profiling","training_trace":"on","task_trace":"on","aicpu":"on","fp_point":"img_input/sub","bp_point":"train_op/gradients/bev_vgg_pyr/conv1/conv1_1/Conv2D_grad/Conv2DBackpropFilter"}')
+            profiling_options = '{"output":"%s","training_trace":"on","task_trace":"on","aicpu":"on","fp_point":"img_input/sub","bp_point":"train_op/gradients/bev_vgg_pyr/conv1/conv1_1/Conv2D_grad/Conv2DBackpropFilter"}' % (args.profiling_dump_path)
+            custom_op.parameter_map["profiling_options"].s = tf.compat.as_bytes(profiling_options)
+
         config.graph_options.rewrite_options.remapping = RewriterConfig.OFF  # 必须显式关闭remap
         config.graph_options.rewrite_options.memory_optimization = RewriterConfig.OFF  # 必须显式关闭
         sess = tf.Session(config=config)
@@ -166,10 +168,12 @@ def train(model, train_config):
         if step % checkpoint_interval == 0:
             global_step = tf.train.global_step(sess,
                                                global_step_tensor)
+            save_time = time.time()
             saver.save(sess,
                        save_path=checkpoint_path,
                        global_step=global_step)
-
+            save_time = time.time() - save_time
+            last_time += save_time
             print('Step {} / {}, Checkpoint saved to {}-{:08d}'.format(
                 step, max_iterations,
                 checkpoint_path, global_step))

@@ -18,7 +18,7 @@ from avod.core import trainer
 
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-def train(model_config, train_config, dataset_config):
+def train(model_config, train_config, dataset_config, args):
 
     dataset = DatasetBuilder.build_kitti_dataset(dataset_config,
                                                  use_defaults=False)
@@ -38,7 +38,7 @@ def train(model_config, train_config, dataset_config):
         else:
             raise ValueError('Invalid model_name')
         
-        trainer.train(model, train_config)
+        trainer.train(model, train_config, args)
 
 
 def main(_):
@@ -62,11 +62,41 @@ def main(_):
                         default=default_data_split,
                         help='Data split for training')
 
-    parser.add_argument('--device',
+    parser.add_argument('--train_steps',
+                        type=int,
+                        default=120000,
+                        help='train_steps default 120000')
+
+    parser.add_argument('--checkpoint_interval',
+                        type=int,
+                        default=1000,
+                        help='checkpoint_interval default 1000')
+
+    parser.add_argument('--summary_interval',
+                        type=int,
+                        default=10,
+                        help='summary_interval default 1000')
+
+    parser.add_argument('--initial_learning_rate',
+                        type=float,
+                        default=0.0001,
+                        help='initial_learning_rate default 0.0001')
+                        
+    parser.add_argument('--precision_mode',
                         type=str,
-                        dest='device',
-                        default=default_device,
-                        help='CUDA device id')
+                        default="allow_mix_precision",
+                        help='precision_mode default allow_mix_precision; allow_fp32_to_fp16 | force_fp16 | must_keep_origin_dtype | allow_mix_precision')
+    
+    parser.add_argument('--profiling',
+                        type=int,
+                        default=0,
+                        help='profiling default 0 (False)')
+
+    parser.add_argument('--profiling_dump_path',
+                        type=str,
+                        default="./output/profiling",
+                        help='profiling_dump_path default: output/profiling')                      
+                        
 
     args = parser.parse_args()
 
@@ -74,14 +104,19 @@ def main(_):
     model_config, train_config, _, dataset_config = \
         config_builder.get_configs_from_pipeline_file(
             args.pipeline_config_path, is_training=True)
+    
+    train_config.max_iterations = args.train_steps
+    train_config.checkpoint_interval = args.checkpoint_interval
+    train_config.summary_interval = args.summary_interval
+    train_config.optimizer.adam_optimizer.learning_rate.exponential_decay_learning_rate.initial_learning_rate = args.initial_learning_rate
 
     # Overwrite data split
     dataset_config.data_split = args.data_split
 
     # Set CUDA device id
-    os.environ['CUDA_VISIBLE_DEVICES'] = args.device
+    os.environ['CUDA_VISIBLE_DEVICES'] = default_device
 
-    train(model_config, train_config, dataset_config)
+    train(model_config, train_config, dataset_config, args)
 
 
 if __name__ == '__main__':

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-
-# export ASCEND_SLOG_PRINT_TO_STDOUT=1 
-# export ASCEND_GLOBAL_LOG_LEVEL=0 # debug level
-# export DUMP_GE_GRAPH=3
-# export DUMP_GRAPH_PATH='/home/jiayan/avod/avod_npu_20210604062633/ge_graph_tmp'
-
 export EXPERIMENTAL_DYNAMIC_PARTITION=1
 
 cur_path=$(dirname $(readlink -f "$0"))
@@ -31,9 +25,9 @@ Network="AVOD"
 #训练epoch，可选
 # train_epochs=1
 #训练step
-train_steps=2
-checkpoint_interval=2
-summary_interval=1 # same as batch size
+train_steps=120000
+checkpoint_interval=1000
+summary_interval=10 # same as batch size
 
 #学习率; 每 30000 steps，衰减到0.8 -> 8*-5
 initial_learning_rate=1e-4

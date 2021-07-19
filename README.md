@@ -22,9 +22,10 @@ The code in this repo is the current working code for NPU training.
 |tf.contrib.memory_stats.MaxBytesInUse() not supported | remove |
 |missing npu config|custom_op.name = "NpuOptimizer";rewrite_options.remapping; rewrite_options.memory_optimization; |
 |Error Caused by: Pad BEV input from 700 to 704 to allow even divisions for max pooling; Pad + conv2d -> somehow pad operation seems to be fused into conv2d, causing shape issue when backpropgation| put padding operation outside of model |
-|<s>Error Caused by: resize input image in model<s> | <s>move out to pre-processing & set input to static<s> |
+|Error Caused by: resize input image in model | move out to pre-processing & set input to static |
 | Dynamic shape caused by `bool_mask` - `mb_mask` | regularize the mask to static shape `[1024]`   |
 | Dynamic shape in (`anchors_info`) and (`label_anchors`, `label_boxes_3d`, `label_classes`)| Padding anchor to a max static shape `30000`, `20`|
 |Tf.case tf.cond seems also not working well in backprob|move the condition outside of the model|
-
+| `mixed_precision` can only be used after the model weights saved then load once (the first time won't work) `[ERROR] RUNTIME(8532)kernel task happen error, retCode=0x26, [aicore exception].` | use with at least one checkpoint|
+| `profiling_options string` cannot have revered `'` and `"` e.g. must be `'{"output":"path","training_trace":"on","task_trace":"on","aicpu":"on","fp_point":"img_input/sub","bp_point":"train_op/gradients/bev_vgg_pyr/conv1/conv1_1/Conv2D_grad/Conv2DBackpropFilter"}'` | cannot be `"{'output':'path',}"` |
 Analysis: all the issues are somehow related to dynamic shape or if-condition, not likely to be resolved by the code conversion tool

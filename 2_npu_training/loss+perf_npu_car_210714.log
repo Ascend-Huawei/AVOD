@@ -12534,7 +12534,8 @@ Step 119980, Total Loss 0.853, Time Elapsed 11.030 s
 Step 119990, Total Loss 1.172, Time Elapsed 9.954 s
 Step 120000 / 120000, Checkpoint saved to /home/jiayan/avod/avod_npu_20210604062633/avod/data/outputs/pyramid_cars_with_aug_example/checkpoints/pyramid_cars_with_aug_example-00120000
 Step 120000, Total Loss 0.857, Time Elapsed 27.233 s
-jiayan@c419d650-6f4a-4b57-9bc6-bf11f05c13e9:~/avod/avod_npu_20210604062633$ [Kjiayan@c419d650-6f4a-4b57-9bc6-bf11f05c13e9:~/avod/avod_npu_20210604062633$ exit
+jiayan@c419d650-6f4a-4b57-9bc6-bf11f05c13e9:~/avod/avod_npu_20210604062633$ 
+[Kjiayan@c419d650-6f4a-4b57-9bc6-bf11f05c13e9:~/avod/avod_npu_20210604062633$ exit
 exit
 
 Script done on 2021-07-17 03:29:51+0800

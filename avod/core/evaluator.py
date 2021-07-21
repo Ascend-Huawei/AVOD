@@ -203,126 +203,126 @@ class Evaluator:
 
         # Run through a single epoch
         current_epoch = self.model.dataset.epochs_completed
-        # while current_epoch == self.model.dataset.epochs_completed:
+        while current_epoch == self.model.dataset.epochs_completed:
 
-        #     # Keep track of feed_dict speed
-        #     start_time = time.time()
-        #     feed_dict = self.model.create_feed_dict()
-        #     feed_dict_time = time.time() - start_time
+            # Keep track of feed_dict speed
+            start_time = time.time()
+            feed_dict = self.model.create_feed_dict()
+            feed_dict_time = time.time() - start_time
 
-        #     # Get sample name from model
-        #     sample_name = self.model.sample_info['sample_name']
+            # Get sample name from model
+            sample_name = self.model.sample_info['sample_name']
 
-        #     # File paths for saving proposals and predictions
-        #     rpn_file_path = prop_score_predictions_dir + "/{}.txt".format(
-        #         sample_name)
+            # File paths for saving proposals and predictions
+            rpn_file_path = prop_score_predictions_dir + "/{}.txt".format(
+                sample_name)
 
-        #     if self.full_model:
-        #         avod_file_path = avod_predictions_dir + \
-        #             "/{}.txt".format(sample_name)
+            if self.full_model:
+                avod_file_path = avod_predictions_dir + \
+                    "/{}.txt".format(sample_name)
 
-        #         if box_rep in ['box_8c', 'box_8co', 'box_4c', 'box_4ca']:
-        #             avod_box_corners_file_path = avod_box_corners_dir + \
-        #                 '/{}.txt'.format(sample_name)
+                if box_rep in ['box_8c', 'box_8co', 'box_4c', 'box_4ca']:
+                    avod_box_corners_file_path = avod_box_corners_dir + \
+                        '/{}.txt'.format(sample_name)
 
-        #     num_valid_samples += 1
-        #     print("Step {}: {} / {}, Inference on sample {}".format(
-        #         global_step, num_valid_samples, num_samples,
-        #         sample_name))
+            num_valid_samples += 1
+            print("Step {}: {} / {}, Inference on sample {}".format(
+                global_step, num_valid_samples, num_samples,
+                sample_name))
 
-        #     # Do predictions, loss calculations, and summaries
-        #     if validation:
-        #         if self.summary_merged is not None:
-        #             predictions, eval_losses, eval_total_loss, summary_out = \
-        #                 self._sess.run([self._prediction_dict,
-        #                                 self._loss_dict,
-        #                                 self._total_loss,
-        #                                 self.summary_merged],
-        #                                feed_dict=feed_dict)
-        #             self.summary_writer.add_summary(summary_out, global_step)
+            # Do predictions, loss calculations, and summaries
+            if validation:
+                if self.summary_merged is not None:
+                    predictions, eval_losses, eval_total_loss, summary_out = \
+                        self._sess.run([self._prediction_dict,
+                                        self._loss_dict,
+                                        self._total_loss,
+                                        self.summary_merged],
+                                       feed_dict=feed_dict)
+                    self.summary_writer.add_summary(summary_out, global_step)
 
-        #         else:
-        #             predictions, eval_losses, eval_total_loss = \
-        #                 self._sess.run([self._prediction_dict,
-        #                                 self._loss_dict,
-        #                                 self._total_loss],
-        #                                feed_dict=feed_dict)
+                else:
+                    predictions, eval_losses, eval_total_loss = \
+                        self._sess.run([self._prediction_dict,
+                                        self._loss_dict,
+                                        self._total_loss],
+                                       feed_dict=feed_dict)
 
-        #         rpn_objectness_loss = eval_losses[RpnModel.LOSS_RPN_OBJECTNESS]
-        #         rpn_regression_loss = eval_losses[RpnModel.LOSS_RPN_REGRESSION]
+                rpn_objectness_loss = eval_losses[RpnModel.LOSS_RPN_OBJECTNESS]
+                rpn_regression_loss = eval_losses[RpnModel.LOSS_RPN_REGRESSION]
 
-        #         self._update_rpn_losses(eval_rpn_losses,
-        #                                 rpn_objectness_loss,
-        #                                 rpn_regression_loss,
-        #                                 eval_total_loss,
-        #                                 global_step)
+                self._update_rpn_losses(eval_rpn_losses,
+                                        rpn_objectness_loss,
+                                        rpn_regression_loss,
+                                        eval_total_loss,
+                                        global_step)
 
-        #         # Save proposals
-        #         proposals_and_scores = \
-        #             self.get_rpn_proposals_and_scores(predictions)
-        #         np.savetxt(rpn_file_path, proposals_and_scores, fmt='%.3f')
+                # Save proposals
+                proposals_and_scores = \
+                    self.get_rpn_proposals_and_scores(predictions)
+                np.savetxt(rpn_file_path, proposals_and_scores, fmt='%.3f')
 
-        #         # Save predictions
-        #         predictions_and_scores = \
-        #             self.get_avod_predicted_boxes_3d_and_scores(predictions,
-        #                                                         box_rep)
-        #         np.savetxt(avod_file_path, predictions_and_scores, fmt='%.5f')
+                # Save predictions
+                predictions_and_scores = \
+                    self.get_avod_predicted_boxes_3d_and_scores(predictions,
+                                                                box_rep)
+                np.savetxt(avod_file_path, predictions_and_scores, fmt='%.5f')
 
-        #         if self.full_model:
-        #             if box_rep in ['box_3d', 'box_4ca']:
-        #                 self._update_avod_box_cls_loc_orient_losses(
-        #                     eval_avod_losses,
-        #                     eval_losses,
-        #                     eval_total_loss,
-        #                     global_step)
+                if self.full_model:
+                    if box_rep in ['box_3d', 'box_4ca']:
+                        self._update_avod_box_cls_loc_orient_losses(
+                            eval_avod_losses,
+                            eval_losses,
+                            eval_total_loss,
+                            global_step)
 
-        #             elif box_rep in ['box_8c', 'box_8co', 'box_4c']:
-        #                 self._update_avod_box_cls_loc_losses(
-        #                     eval_avod_losses,
-        #                     eval_losses,
-        #                     eval_total_loss,
-        #                     global_step)
+                    elif box_rep in ['box_8c', 'box_8co', 'box_4c']:
+                        self._update_avod_box_cls_loc_losses(
+                            eval_avod_losses,
+                            eval_losses,
+                            eval_total_loss,
+                            global_step)
 
-        #             if box_rep != 'box_3d':
-        #                 # Save box corners for all box reps
-        #                 # except for box_3d which is not a corner rep
-        #                 predicted_box_corners_and_scores = \
-        #                     self.get_avod_predicted_box_corners_and_scores(
-        #                         predictions, box_rep)
-        #                 np.savetxt(avod_box_corners_file_path,
-        #                            predicted_box_corners_and_scores,
-        #                            fmt='%.5f')
+                    if box_rep != 'box_3d':
+                        # Save box corners for all box reps
+                        # except for box_3d which is not a corner rep
+                        predicted_box_corners_and_scores = \
+                            self.get_avod_predicted_box_corners_and_scores(
+                                predictions, box_rep)
+                        np.savetxt(avod_box_corners_file_path,
+                                   predicted_box_corners_and_scores,
+                                   fmt='%.5f')
 
-        #         # Calculate accuracies
-        #         self.get_cls_accuracy(predictions,
-        #                               eval_avod_losses,
-        #                               eval_rpn_losses,
-        #                               global_step)
-        #         print("Step {}: Total time {} s".format(
-        #             global_step, time.time() - start_time))
+                # Calculate accuracies
+                self.get_cls_accuracy(predictions,
+                                      eval_avod_losses,
+                                      eval_rpn_losses,
+                                      global_step)
+                print("Step {}: Total time {} s".format(
+                    global_step, time.time() - start_time))
 
-        #     else:
-        #         # Test mode --> train_val_test == 'test'
-        #         inference_start_time = time.time()
-        #         # Don't calculate loss or run summaries for test
-        #         predictions = self._sess.run(self._prediction_dict,
-        #                                      feed_dict=feed_dict)
-        #         inference_time = time.time() - inference_start_time
+            else:
+                # Test mode --> train_val_test == 'test'
+                inference_start_time = time.time()
+                # Don't calculate loss or run summaries for test
+                predictions = self._sess.run(self._prediction_dict,
+                                             feed_dict=feed_dict)
+                inference_time = time.time() - inference_start_time
 
-        #         # Add times to list
-        #         total_feed_dict_time.append(feed_dict_time)
-        #         total_inference_time.append(inference_time)
+                # Add times to list
+                total_feed_dict_time.append(feed_dict_time)
+                total_inference_time.append(inference_time)
 
-        #         proposals_and_scores = \
-        #             self.get_rpn_proposals_and_scores(predictions)
-        #         predictions_and_scores = \
-        #             self.get_avod_predicted_boxes_3d_and_scores(predictions,
-        #                                                         box_rep)
+                proposals_and_scores = \
+                    self.get_rpn_proposals_and_scores(predictions)
+                predictions_and_scores = \
+                    self.get_avod_predicted_boxes_3d_and_scores(predictions,
+                                                                box_rep)
 
-        #         np.savetxt(rpn_file_path, proposals_and_scores, fmt='%.3f')
-        #         np.savetxt(avod_file_path, predictions_and_scores, fmt='%.5f')
+                np.savetxt(rpn_file_path, proposals_and_scores, fmt='%.3f')
+                np.savetxt(avod_file_path, predictions_and_scores, fmt='%.5f')
 
-        # # end while current_epoch == model.dataset.epochs_completed:
+        # end while current_epoch == model.dataset.epochs_completed:
 
         if validation:
             self.save_proposal_losses_results(eval_rpn_losses,
@@ -330,12 +330,12 @@ class Evaluator:
                                               global_step,
                                               predictions_base_dir)
             if self.full_model:
-                # self.save_prediction_losses_results(
-                #     eval_avod_losses,
-                #     num_valid_samples,
-                #     global_step,
-                #     predictions_base_dir,
-                #     box_rep=box_rep)
+                self.save_prediction_losses_results(
+                    eval_avod_losses,
+                    num_valid_samples,
+                    global_step,
+                    predictions_base_dir,
+                    box_rep=box_rep)
 
                 # Kitti native evaluation, do this during validation
                 # and when running Avod model.

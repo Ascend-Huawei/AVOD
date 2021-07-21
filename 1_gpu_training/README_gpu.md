@@ -51,7 +51,7 @@ Evaluation: [requirement_eval.txt](requirement_eval.txt)
 Get the frozen graph by
 
 ```
-python pb_model/freeze_model.py --checkpoint_name='pyramid_cars_with_aug_example' --data_split='val' --ckpt_index=18 --device='1'
+python pb_model/freeze_model.py --checkpoint_name='pyramid_cars_with_aug_example' --ckpt_index=18 --device='1'
 ```
 The `ckpt_index` here indicates the index of the checkpoint to freeze. If the `checkpoint_interval` inside your config is `1000`, to freeze checkpoints `116000`, the indices should be `--ckpt_index=116`. The default value is `-1` : freeze the last checkpoint. 
 

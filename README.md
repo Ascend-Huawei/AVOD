@@ -33,8 +33,16 @@ Analysis: all the issues are somehow related to dynamic shape or if-condition, n
 
 ## Inference
 
+### Download Models
+pb: https://drive.google.com/file/d/1CbBpfRwUsf4GROQo0lO4FY1j4pOJv5O1/view?usp=sharing <br>
+om: https://drive.google.com/file/d/1LJrWDnDeL09VsmXtAioYOHmbuo71YfYj/view?usp=sharing
+
+Put them into `3_inference/code/model`
+
 ### Conversion Command
 ```
+cd 3_inference/code/
+
 atc --input_shape="bev_input/bev_input_pl:704,800,6;img_input/img_input_pl:360,1200,3;pl_anchors/anchors_pl:89600,6;pl_anchors/bev_anchor_projections/bev_anchors_norm_pl:89600,4;pl_anchors/img_anchor_projections/img_anchors_norm_pl:89600,4;pl_anchors/sample_info/frame_calib_p2:3,4;pl_anchors/sample_info/ground_plane:4" --input_format=NHWC --output model/avod_npu --soc_version=Ascend310 --framework=3 --model model/avod_npu.pb
 ```
 ### Run Inference

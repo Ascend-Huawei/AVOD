@@ -164,12 +164,8 @@ def tf_box_3d_to_box_4c(boxes_3d, ground_plane):
     batched_h1 = tf.reshape(h1, [-1, 1])
     batched_h2 = tf.reshape(h2, [-1, 1])
 
-    # print(flat_corners)
-    # print(batched_h1)
-    # print(batched_h2)
     # Stack into (?, 10)
     box_4c = tf.concat([flat_corners, batched_h1, batched_h2], axis=1)
-    # print(box_4c); # raise Exception
     return box_4c
 
 

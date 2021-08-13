@@ -170,7 +170,7 @@ def _early_fusion_fc_layers(num_layers, layer_sizes,
             # Use conv2d instead of fully_connected layers.
             fc_layer = slim.fully_connected(fc_drop, layer_sizes[layer_idx],
                                             scope='fc{}'.format(fc_name_idx))
-            # print(fc_drop) 
+
             # fc_layer = slim.conv2d(fc_drop, layer_sizes[layer_idx], [3, 3], padding='VALID',
             #                         scope='fc{}'.format(fc_name_idx))
 
@@ -181,15 +181,10 @@ def _early_fusion_fc_layers(num_layers, layer_sizes,
                 scope='fc{}_drop'.format(fc_name_idx))
 
             fc_name_idx += 1
-        # fc_drop = tf.squeeze(fc_drop, [1, 2], name='ffc8/squeezed')
-        # print(fc_drop) # (1024, 2048)
+
         output_layers = build_output_layers(fc_drop,
                                             num_final_classes,
                                             box_rep)
-        # print(output_layers[0])
-        # print(output_layers[1])
-        # print(output_layers[2])
-        # raise Exception
 
     return output_layers
 

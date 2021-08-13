@@ -177,13 +177,10 @@ def train(model, train_config, args):
             print('Step {} / {}, Checkpoint saved to {}-{:08d}'.format(
                 step, max_iterations,
                 checkpoint_path, global_step))
-        # print('save checkpoint', time.time() - st)
         
         # Create feed_dict for inferencing
         st = time.time()
         feed_dict = model.create_feed_dict()
-        # print("create_feed_dict all", time.time() - st); st = time.time()
-        # raise Exception("create_feed_dict")
         # Write summaries and train op
         if step % summary_interval == 0:
             current_time = time.time()

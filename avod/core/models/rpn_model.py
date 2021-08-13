@@ -705,15 +705,7 @@ class RpnModel(model.DetectionModel):
             # Only handle one sample at a time for now
             sample = samples[0]
             anchors_info = sample.get(constants.KEY_ANCHORS_INFO)
-        # print('create_feed_dict 1', time.time() - st); st = time.time()
-        # for k, v in sample.items():
-        #     if type(v) is np.ndarray:
-        #         print(k, v.shape)
-        #     # elif k == "anchors_info":
-        #     #     print(k, v[0].shape, v[1].shape, v[2].shape, v[3].shape)
-        #     else:
-        #         print(k, v)
-        # raise Exception
+
         sample_name = sample.get(constants.KEY_SAMPLE_NAME)
         sample_augs = sample.get(constants.KEY_SAMPLE_AUGS)
 
@@ -738,14 +730,12 @@ class RpnModel(model.DetectionModel):
 
         if anchors_info:
             # anchors_info = [np.zeros(1), 0.5 * np.ones(1), -np.ones((1,6)), -np.ones(1)]
-            # print(anchors_info[0].shape[0])
             anchors_info = (
                 np.pad(anchors_info[0], ( 0, 30000 - anchors_info[0].shape[0]) ),  # anchor_indices 0
                 np.pad(anchors_info[1], ( 0, 30000 - anchors_info[1].shape[0]), constant_values=0.5), # ious: pad 0.5
                 np.pad(anchors_info[2], ((0, 30000 - anchors_info[2].shape[0]), (0, 0)), constant_values=-1), # offsets: pad -1
                 np.pad(anchors_info[3], ( 0, 30000 - anchors_info[3].shape[0]), constant_values=-1), # ious: pad -1
             ) 
-            # print("padding 30000", time.time() - st)
 
         # Fill the placeholders for anchor information
         self._fill_anchor_pl_inputs(anchors_info=anchors_info,
@@ -891,10 +881,6 @@ class RpnModel(model.DetectionModel):
         anchors_ious = np.asarray(anchors_ious)
         anchor_offsets = np.asarray(anchor_offsets)
         anchor_classes = np.asarray(anchor_classes)
-        # print(anchor_boxes_3d_to_use.shape) # (16215, 7)
-        # print(anchors_ious.shape) # (16215,)
-        # print(anchor_offsets.shape) # (16215, 6)
-        # print(anchor_classes.shape) # (16215,)
 
         # Flip anchors and centroid x offsets for augmented samples
         if kitti_aug.AUG_FLIPPING in sample_augs:
@@ -907,9 +893,7 @@ class RpnModel(model.DetectionModel):
         anchors_to_use = box_3d_encoder.box_3d_to_anchor(
             anchor_boxes_3d_to_use)
         num_anchors = len(anchors_to_use)
-        # print(num_anchors) # (5860,)
-        # print(anchors_to_use.shape)
-        # raise Exception
+
         # Project anchors into bev
         bev_anchors, bev_anchors_norm = anchor_projector.project_to_bev(
             anchors_to_use, self._bev_extents)
@@ -922,19 +906,7 @@ class RpnModel(model.DetectionModel):
         # Reorder into [y1, x1, y2, x2] for tf.crop_and_resize op
         self._bev_anchors_norm = bev_anchors_norm[:, [1, 0, 3, 2]]
         self._img_anchors_norm = img_anchors_norm[:, [1, 0, 3, 2]]
-        # print(bev_anchors.shape)
-        # print(self._bev_anchors_norm.shape)
-        # print(img_anchors.shape)
-        # print(self._img_anchors_norm.shape)
-        # raise Exception
-        # Fill in placeholder inputs
-        # print(anchors_to_use.dtype)
-        # print(anchors_to_use.shape)
-        # anchors_to_use = anchors_to_use.astype('float16')
-        # print(anchors_to_use.dtype)
 
-        # print(type(anchors_to_use[0][0]))
-        # raise Exception
         self._placeholder_inputs[self.PL_ANCHORS] = anchors_to_use # (16215, 6)
 
         # If we are in train/validation mode, and the anchor infos

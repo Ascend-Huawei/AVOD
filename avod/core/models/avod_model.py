@@ -510,12 +510,19 @@ class AvodModel(model.DetectionModel):
             all_top_scores = tf.reduce_max(all_cls_logits[:, 1:], axis=1)
 
             # Apply NMS in BEV
-            nms_indices = tf.image.non_max_suppression(
+            nms_indices, num_valid = tf.image.non_max_suppression_padded(
                 avod_bev_boxes_tf_order,
                 all_top_scores,
                 max_output_size=self._nms_size,
-                iou_threshold=self._nms_iou_threshold)
+                iou_threshold=self._nms_iou_threshold,
+                pad_to_max_output_size=True)
 
+            # comment the following line if going to freeze model and convert to offline model (om)
+            nms_indices = nms_indices[:num_valid]
+            
+            avod_nms_num_valid = tf.identity(
+                num_valid, name="avod_nms_num_valid"
+            )
             # _pad = self._nms_size - nms_indices.shape[0]
             # if _pad > 0:
             #     nms_indices = tf.pad(nms_indices, tf.constant([[0, _pad]]), "CONSTANT", constant_values=nms_indices[-1])
@@ -607,6 +614,8 @@ class AvodModel(model.DetectionModel):
 
         else:
             # self._train_val_test == 'test'
+            prediction_dict['avod_nms_num_valid'] = avod_nms_num_valid
+
             prediction_dict[self.PRED_TOP_CLASSIFICATION_SOFTMAX] = \
                 top_classification_softmax
             prediction_dict[self.PRED_TOP_PREDICTION_ANCHORS] = \

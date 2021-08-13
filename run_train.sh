@@ -1,10 +1,10 @@
 #!/bin/sh
-export PYTHONPATH=$PYTHONPATH:'/home/jiayan/avod/avod_npu_20210604062633'
-export PYTHONPATH=$PYTHONPATH:'/home/jiayan/avod/avod_npu_20210604062633/wavedata'
+export PYTHONPATH=$PYTHONPATH:'.'
+export PYTHONPATH=$PYTHONPATH:'./wavedata'
 # export ASCEND_SLOG_PRINT_TO_STDOUT=1 
 # export ASCEND_GLOBAL_LOG_LEVEL=0 # debug level
 # export DUMP_GE_GRAPH=3
-# export DUMP_GRAPH_PATH='/home/jiayan/avod/avod_npu_20210604062633/ge_graph_tmp'
+# export DUMP_GRAPH_PATH='./ge_graph_tmp'
 
 export EXPERIMENTAL_DYNAMIC_PARTITION=1
 

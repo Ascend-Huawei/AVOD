@@ -64,8 +64,8 @@ def main(_):
 
     parser.add_argument('--train_steps',
                         type=int,
-                        default=120000,
-                        help='train_steps default 120000')
+                        default=200000,
+                        help='train_steps default 200000')
 
     parser.add_argument('--checkpoint_interval',
                         type=int,

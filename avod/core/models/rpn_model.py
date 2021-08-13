@@ -492,13 +492,19 @@ class RpnModel(model.DetectionModel):
                 objectness_scores = objectness_softmax[:, 1]
 
                 # Do NMS on regressed anchors
-                top_indices = tf.image.non_max_suppression(
+                top_indices, _ = tf.image.non_max_suppression_padded(
                     bev_proposal_boxes_norm, objectness_scores,
                     max_output_size=self._nms_size,
-                    iou_threshold=self._nms_iou_thresh)
+                    iou_threshold=self._nms_iou_thresh,
+                    pad_to_max_output_size=True)
 
                 top_anchors = tf.gather(regressed_anchors, top_indices)
                 top_anchors = tf.reshape(top_anchors, [self._nms_size, 6])
+
+                # For conversion
+                out_top_anchors = tf.identity(
+                    top_anchors, name="out_top_anchors"
+                )
 
                 top_objectness_softmax = tf.gather(objectness_scores,
                                                    top_indices)
@@ -616,6 +622,7 @@ class RpnModel(model.DetectionModel):
 
         else:
             # self._train_val_test == 'test'
+            predictions['out_top_anchors'] = out_top_anchors
             predictions[self.PRED_TOP_ANCHORS] = top_anchors
             predictions[
                 self.PRED_TOP_OBJECTNESS_SOFTMAX] = top_objectness_softmax

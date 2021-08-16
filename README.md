@@ -33,9 +33,11 @@ Analysis: all the issues are somehow related to dynamic shape or if-condition, n
 
 ## Inference
 
-### Download Models
+### Download Models and Validation Set
 pb: https://drive.google.com/file/d/1CbBpfRwUsf4GROQo0lO4FY1j4pOJv5O1/view?usp=sharing <br>
 om: https://drive.google.com/file/d/1LJrWDnDeL09VsmXtAioYOHmbuo71YfYj/view?usp=sharing
+
+Val: https://drive.google.com/file/d/1fRJS00A8bINuE3xqJg8O6Mg60bSZ7FgC/view?usp=sharing
 
 Put them into `3_inference/code/model`
 

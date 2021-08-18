@@ -5,6 +5,10 @@ Delivery Result for NPU training (currently, conversion, loss convergence, accur
 Support documents in folder [2_npu_training](2_npu_training)
 The code in this repo is the current working code for NPU training.
 
+## Checkpoint
+GPU: https://drive.google.com/file/d/1e04PcvoSzfVxZ_Si3H0njcuBFMXP-_m9/view?usp=sharing
+
+NPU: https://drive.google.com/file/d/1ZnDOkh9S7R8w-rchvgq0LH-suKDi-qRZ/view?usp=sharing
 
 ## Evaluation AP
 ### KITTI Object Detection Results (3D and BEV) Car

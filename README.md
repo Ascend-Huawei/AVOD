@@ -36,6 +36,9 @@ NPU: https://drive.google.com/file/d/1ZnDOkh9S7R8w-rchvgq0LH-suKDi-qRZ/view?usp=
 Analysis: all the issues are somehow related to dynamic shape or if-condition, not likely to be resolved by the code conversion tool
 
 ## Inference
+### Note
+For model conversion, one line (https://github.com/Ascend-Huawei/AVOD/blob/main/avod/core/models/avod_model.py#L513) needs to be commented out because it generates dynamic output which causes segementation fault error.
+Then `cd pb_model; bash freeze.sh`
 
 ### Download Models and Validation Set
 pb: https://drive.google.com/file/d/1CbBpfRwUsf4GROQo0lO4FY1j4pOJv5O1/view?usp=sharing <br>

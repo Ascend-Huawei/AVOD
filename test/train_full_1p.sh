@@ -25,7 +25,7 @@ Network="AVOD"
 #训练epoch，可选
 # train_epochs=1
 #训练step
-train_steps=120000
+train_steps=200000
 checkpoint_interval=1000
 summary_interval=10 # same as batch size
 

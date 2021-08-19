@@ -5,6 +5,35 @@ Delivery Result for NPU training (currently, conversion, loss convergence, accur
 Support documents in folder [2_npu_training](2_npu_training)
 The code in this repo is the current working code for NPU training.
 
+## Training Dataset
+Images, point cloud: http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d
+```
+wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_image_2.zip
+wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_label_2.zip
+wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_calib.zip
+wget https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_velodyne.zip
+```
+Extra txt: https://drive.google.com/open?id=1yjCwlSOfAZoPNNqoMtWfEjPCfhRfJB-Z
+
+The folder should look something like the following:
+```
+Kitti
+    object
+        testing
+        training
+            calib
+            image_2
+            label_2
+            planes
+            velodyne
+        train.txt
+        val.txt
+```
+
+Pre-process data by following the [README](README.md)
+
+To Train on other datasets, either write a diff dataloader or convert to the kitti format.
+
 ## Checkpoint
 GPU: https://drive.google.com/file/d/1e04PcvoSzfVxZ_Si3H0njcuBFMXP-_m9/view?usp=sharing
 
@@ -12,13 +41,17 @@ NPU: https://drive.google.com/file/d/1ZnDOkh9S7R8w-rchvgq0LH-suKDi-qRZ/view?usp=
 
 ## Evaluation AP
 ### KITTI Object Detection Results (3D and BEV) Car
-|              |             |   |           |        AP-3D |           |   |           |       AP-BEV |           |
-|:------------:|:-----------:|---|:---------:|:------------:|:---------:|---|:---------:|:------------:|:---------:|
-|            | **Runtime** |   |  **Easy** | **Moderate** |  **Hard** |   |  **Easy** | **Moderate** |  **Hard** |
-|     Paper |      0.10   |   | **81.94** |    **71.88** | **66.38** |   |   88.53   |      83.79   | 77.90 |
-|      GPU |1.83||80.97|67.27|65.61|   |**89.56**|**86.33**|**79.60**|
-|      NPU |3.50||77.61|67.40|65.74|   |88.74|85.44|78.96|
-|      200dk batch=1; including pre&post process |0.653||76.58|67.25|66.36|   |88.68|85.45|78.84|
+|               |            |          |   |           |        AP-3D  |           |   |           |       AP-BEV  |           |
+|:-------------:|:----------:|:--------:|---|:---------:|:-------------:|:---------:|---|:---------:|:-------------:|:---------:|
+|               | **Runtime**|**Steps** |   |  **Easy** | **Moderate**  |  **Hard** |   |  **Easy** | **Moderate**  |  **Hard** |
+|     Paper     |    0.10    |          |   |**81.94**  |    **71.88**  | **66.38** |   |   88.53   |      83.79    |   77.90   |
+|      GPU      |    0.9     | 120,000  |   |   80.97   |     67.27     |   65.61   |   | **89.56** |   **86.33**   | **79.60** |
+| NPU <br>`no mix-percision`|    3.5     | 120,000  |   |   77.61   |     67.40     |   65.74   |   |   88.74   |   85.44       |   78.96   |
+| NPU <br>`mix-percision`   |    1.0     | 200,000  |   |   76.35   |     67.18     |   66.49   |   |   88.74   |   85.44       |   78.96   |
+|200dk batch=1; including pre&post process |0.653|||76.58|    67.25     |   66.36   |   |   88.68   |   85.45       |   78.84   |
+
+### Summary
+Overall performance is worse than GPU, it's a trade-off between speed and accuracy. To meet the same accuracy with mix-percision, it's required to train extra steps; otherwise without mix-percision, the runtime for each step is much slower.
 
 ### Code changes after using Conversion Tool:  
 | Issue | Code change|
@@ -44,9 +77,12 @@ Then `cd pb_model; bash freeze.sh`
 pb: https://drive.google.com/file/d/1CbBpfRwUsf4GROQo0lO4FY1j4pOJv5O1/view?usp=sharing <br>
 om: https://drive.google.com/file/d/1LJrWDnDeL09VsmXtAioYOHmbuo71YfYj/view?usp=sharing
 
+Put them into `3_inference/code/model`
+
 Val: https://drive.google.com/file/d/1fRJS00A8bINuE3xqJg8O6Mg60bSZ7FgC/view?usp=sharing
 
-Put them into `3_inference/code/model`
+Put Val set into `3_inference/code/data` like <br>
+![](3_inference/code/data/dir_struc.png)
 
 ### Conversion Command
 ```
